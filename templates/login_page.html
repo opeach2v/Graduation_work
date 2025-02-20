@@ -1,10 +1,14 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>시선집중</title>
 </head>
 <body>
+    {% block asd %}
+    {% endblock %}
     <h1>시선집중</h1>
     <button>교수</button><button>학생</button>
     <button>관리자</button>
