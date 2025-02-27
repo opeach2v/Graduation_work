@@ -91,7 +91,7 @@ DATABASES = {
          },
         'NAME': 'usersDB',
         'CLIENT': {
-            'host': '13.209.113.91',,
+            'host': '13.209.113.91',
             'port': 27017,
             'username': 'root',
             'password': "opeach22v!",
