@@ -9,19 +9,63 @@
 <body>
     {% block asd %}
     {% endblock %}
-    <h1>DB 테스트</h1><br>
-    
-    <h3>데이터 삽입</h3><br>
-    <div>이름 <input type='text' id="name"><br>
-        아이디 <input type='text' id="user-id"> <button>저장</button>
-    </div><br><br>
+    <form action="/add" method="POST">
+        <h1>DB 테스트</h1><br>
 
-    <h3>데이터 조회</h3><br>
-    <div>이름 <input type='text' id="name"> <button>조회</button>
-    </div><br><br>
+        <h3>데이터 삽입</h3><br>
+        <div>이름 <input type='text' id="name"><br>
+            아이디 <input type='text' id="user-id"> <button type="submit" onclick="addData()">저장</button>
+        </div><br><br>
 
-    <h3>데이터 삭제</h3><br>
-    <div>이름 <input type='text' id="name"> <button>삭제</button>
-    </div>
+        <h3>데이터 조회</h3><br>
+        <div><button type="submit" onclick="getData()">조회</button>
+            <ul id="dataList"></ul>
+        </div><br><br>
+        <!--
+        <h3>데이터 삭제</h3><br>
+        <div>이름 <input type='text' id="name"> <button type="submit">삭제</button>
+        </div> -->
+    </form>
+
+    <script> <!--server.js 느낌-->
+        async function addData() {
+            const name = document.getElementById("name").value;
+            const ID = document.getElementById("ID").value;
+
+            const response = await fetch("/add/", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name, ID })
+            });
+
+            const result = await response.json();
+            alert(result.message);
+        }
+
+        async function getData() {
+            const response = await fetch("/get/");
+            const data = await response.json();
+            const list = document.getElementById("dataList");
+            list.innerHTML = "";
+            data.forEach(item => {
+                const li = document.createElement("li");
+                li.innerHTML = `${item.name} - ${item.ID}
+                <button onclick="deleteData('${item.id}')">삭제</button>`;
+                list.appendChild(li);
+            });
+        }
+
+        async function deleteData(id) {
+            const response = await fetch("/delete/", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ id })
+            });
+
+            const result = await response.json();
+            alert(result.message);
+            getData();
+        }
+    </script>
 </body>
 </html>
