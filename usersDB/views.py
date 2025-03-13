@@ -24,11 +24,18 @@ def add_data(request):
         )
         return JsonResponse({"message": "Data added successfully", "id": new_entry.id})
 
+    # GET 요청이 들어왔을 때의 응답 추가
+    return JsonResponse({"error": "GET method is not allowed for this endpoint"}, status=405)
+
+
 @csrf_exempt
 def get_data(request):
     if request.method == "GET":
         data = list(testData.objects.values())  # 모든 데이터를 JSON 형식으로 변환
         return JsonResponse(data, safe=False)
+
+    return JsonResponse({"error": "Only GET method is allowed"}, status=405)
+
 
 @csrf_exempt
 def delete_data(request):
@@ -40,3 +47,5 @@ def delete_data(request):
             return JsonResponse({"message": "Data deleted successfully"})
         except testData.DoesNotExist:
             return JsonResponse({"error": "Data not found"}, status=404)
+
+    return JsonResponse({"error": "Only POST method is allowed"}, status=405)
