@@ -9,24 +9,24 @@
 <body>
     {% block asd %}
     {% endblock %}
-    <form id="dataForm">
+    <div>
         <h1>DB 테스트</h1><br>
 
         <h3>데이터 삽입</h3><br>
         <div>이름 <input type='text' id="name"><br>
             아이디 <input type='text' id="user-id"> <br>
-            <button type="button" onclick="addData()">저장</button>
+            <button type="button" onclick="addData(event)">저장</button>
         </div><br><br>
 
         <h3>데이터 조회</h3><br>
-        <div><button type="button" onclick="getData()">조회</button>
+        <div><button type="button" onclick="getData(event)">조회</button>
             <ul id="dataList"></ul>
         </div><br><br>
         <!--
         <h3>데이터 삭제</h3><br>
         <div>이름 <input type='text' id="name"> <button type="button">삭제</button>
         </div> -->
-    </form>
+    </div>
 
     <script> <!--server.js 느낌-->
         async function addData() {
@@ -60,7 +60,7 @@
 
         async function deleteData(id) {
             event.preventDefault();  // 기본 form 제출 막기 (중복 요청 방지)
-            
+
             const response = await fetch("/delete/", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
