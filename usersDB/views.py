@@ -6,7 +6,7 @@ import pymongo
 from .models import testData
 
 # MongoDB 연결
-client = pymongo.MongoClient("mongodb://0.0.0.0:27017/")
+client = pymongo.MongoClient("mongodb://localhost:27017/")
 db = client["usersDB"]  # 사용할 데이터베이스
 collection = db["testData"]   # 사용할 컬렉션
 

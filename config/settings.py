@@ -93,9 +93,9 @@ DATABASES = {
         'CLIENT': {
             'host': 'localhost',
             'port': 27017,
-            'username': 'root',
+            'username': 'root2',
             'password': "opeach22v!",
-            'authSource': 'admin',
+            'authSource': 'testData',
             'authMechanism': 'SCRAM-SHA-1'
         }
     }
