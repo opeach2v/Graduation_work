@@ -9,41 +9,56 @@
 <body>
     {% block asd %}
     {% endblock %}
-    <div>
+    <form id="dataForm">
         <h1>DB 테스트</h1><br>
 
         <h3>데이터 삽입</h3><br>
         <div>이름 <input type='text' id="name"><br>
             아이디 <input type='text' id="user-id"> <br>
-            <button type="button" onclick="addData(event)">저장</button>
+            <button type="submit"">저장</button>
         </div><br><br>
 
         <h3>데이터 조회</h3><br>
-        <div><button type="button" onclick="getData(event)">조회</button>
+        <div><button type="submit"">조회</button>
             <ul id="dataList"></ul>
         </div><br><br>
         <!--
         <h3>데이터 삭제</h3><br>
-        <div>이름 <input type='text' id="name"> <button type="button">삭제</button>
+        <div>이름 <input type='text' id="name"> <button type="submit">삭제</button>
         </div> -->
-    </div>
+    </form>
 
     <script> <!--server.js 느낌-->
-        async function addData() {
-            event.preventDefault();  // 기본 form 제출 막기 (중복 요청 방지)
-
+        document.getElementById("dataForm").addEventListener("submit", async function(event) {
+            event.preventDefault();  // 폼의 기본 제출 동작을 막음 (페이지 새로고침 방지)
+        
             const name = document.getElementById("name").value;
-            const ID = document.getElementById("ID").value;
-
-            const response = await fetch("/add/", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ name, ID })
-            });
-
-            const result = await response.json();
-            alert(result.message);
-        }
+            const ID = document.getElementById("user-id").value;
+        
+            if (!name || !ID) {
+                alert("이름과 아이디를 입력하세요!");
+                return;
+            }
+        
+            try {
+                const response = await fetch("/add/", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ name, ID })
+                });
+        
+                const data = await response.json();
+                alert(data.message);  // 성공 메시지 출력
+        
+                // 입력 필드 초기화
+                document.getElementById("name").value = "";
+                document.getElementById("user-id").value = "";
+        
+            } catch (error) {
+                alert("서버 요청 중 오류가 발생했습니다!");
+                console.error("Error:", error);
+            }
+        });
 
         async function getData() {
             const response = await fetch("/get/");
@@ -59,8 +74,6 @@
         }
 
         async function deleteData(id) {
-            event.preventDefault();  // 기본 form 제출 막기 (중복 요청 방지)
-
             const response = await fetch("/delete/", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
