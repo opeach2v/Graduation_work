@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from config.views import main
-from .views import add_data, get_data, delete_data
+from usersDB.views import dbtest, add_data, get_data, delete_data
 
 urlpatterns = [
     path('admin/', admin.site.urls),

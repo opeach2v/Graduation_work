@@ -5,3 +5,4 @@ def main(request):
 
 def dbtest(request):
     return render(request, 'db_test.html')
+
