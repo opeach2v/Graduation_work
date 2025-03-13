@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>DB 테스트</title>
+</head>
+<body>
+    {% block asd %}
+    {% endblock %}
+    <h1>DB 테스트</h1><br>
+    
+    <h3>데이터 삽입</h3><br>
+    <div>이름 <input type='text' id="name"><br>
+        아이디 <input type='text' id="user-id"> <button>저장</button>
+    </div><br><br>
+
+    <h3>데이터 조회</h3><br>
+    <div>이름 <input type='text' id="name"> <button>조회</button>
+    </div><br><br>
+
+    <h3>데이터 삭제</h3><br>
+    <div>이름 <input type='text' id="name"> <button>삭제</button>
+    </div>
+</body>
+</html>
