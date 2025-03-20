@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/page_style.css' %}">
+    <title>어린이가 위험해요!</title>
+</head>
+<body>
+    {% block asd %}
+    {% endblock %}
+    <header>
+        <img src="ku_logo.jpg" alt="경남대 로고" class="logo-img"><h1>OOO 선생님, 반갑습니다!</h1><h4>로그아웃</h4>
+    </header>
+    <!-- 메인 영역 -->
+     <main class="main-container">
+        <section class="comment-container">
+            <div class="student-box">
+                <ul>
+                    <li class="none">
+                        이름        나이      <button class="list-comment-btn"
+                            onclick="location.href='comment.html'">공통 내용</button>
+                    </li>
+                    <li class="none">
+                        장슬히      5살        <button class="list-comment-btn"
+                            onclick="location.href='comment.html'">알림장</button>
+                    </li>
+                    <li class="none">
+                        안채윤      4살        <button class="list-comment-btn"
+                            onclick="location.href='comment.html'">알림장</button>
+                    </li>
+                    <li class="none">
+                        이예인      3살        <button class="list-comment-btn"
+                            onclick="location.href='comment.html'">알림장</button>
+                    </li>
+                    <li class="none">
+                        신은지      5살        <button class="list-comment-btn"
+                            onclick="location.href='comment.html'">알림장</button>
+                    </li>
+                    <li class="none">
+                        황연정      4살        <button class="list-comment-btn"
+                            onclick="location.href='comment.html'">알림장</button>
+                    </li>
+                </ul>
+            </div>
+        </section>
+     </main>
+</body>
+</html>
