@@ -3,54 +3,117 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Django에서만 작동 -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- live server에서만 작동 -->
+    <link rel="stylesheet" href="../static/css/style.css">
     <title>어린이가 위험해요!</title>
 </head>
 <body>
     {% block asd %}
     {% endblock %}
-    <header class="site-header">
-        <div class="logo-area">
-            <img src="./ku_logo.jpg" alt="경남대 로고" class="logo-img"><h1>OOO 선생님, 반갑습니다!</h1>
-        </div>
-        <nav class="header-nav">
-            <ul>
-                <li><a href="#1">로그아웃</a></li>
-            </ul>
-        </nav>
-    </header>
     <!-- 메인 영역 -->
-     <main class="main-container">
-        <section class="comment-container">
-            <div class="student-box">
-                <h2>알림장 작성</h2>
-                <div class="student-list-box">
-                    <ul>
-                        <li class="none">
-                            이름        나이      <button class="list-comment-btn"
-                                onclick="location.href='comment.html'">공통 내용</button>
-                        </li>
-                        <li class="none">
-                            장슬히      5살        <button class="list-comment-btn"
-                                onclick="location.href='comment.html'">알림장</button>
-                        </li>
-                        <li class="none">
-                            안채윤      4살        <button class="list-comment-btn"
-                                onclick="location.href='comment.html'">알림장</button>
-                        </li>
-                        <li class="none">
-                            이예인      3살        <button class="list-comment-btn"
-                                onclick="location.href='comment.html'">알림장</button>
-                        </li>
-                        <li class="none">
-                            신은지      5살        <button class="list-comment-btn"
-                                onclick="location.href='comment.html'">알림장</button>
-                        </li>
-                        <li class="none">
-                            황연정      4살        <button class="list-comment-btn"
-                                onclick="location.href='comment.html'">알림장</button>
-                        </li>
-                    </ul>
+    <!-- Django에서만 작동 -->
+    <script src="{% static 'js/page.js' %}"></script>
+    <!-- live server에서만 작동 -->
+    <script src="../static/js/page.js"></script>
+    <main class="main-container">
+        <header class="site-header">
+            <div class="logo-area">
+                <img src="../ku_logo.jpg" alt="경남대 로고" class="logo-img"><h1 style="font-size: 32px; padding-left: 15px;">석승주 선생님, 반갑습니다!</h1>
+            </div>
+            <nav class="header-nav">
+                <ul>
+                    <li><a href="main.html">로그아웃</a></li>
+                </ul>
+            </nav>
+        </header>
+        <section class="homework-container" id="homeworkContainer">
+            <div class="homework-box">
+                <!-- <h2 style="margin-bottom: 13px; font-size: 25px; text-align: center;">알림장 작성</h2> -->
+                <div class="homework-list-box" id="tableArea">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>이름</th>
+                                <th>나이</th>
+                                <th><button class="list-comment-btn" onclick="javascript:openFormAll()">공통 내용</button></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>장슬히</td>
+                                <td>5세</td>
+                                <td><button class="list-comment-btn" onclick="javascript:openForm()">알림장</button></td>
+                            </tr>
+                            <tr>
+                                <td>안채윤</td>
+                                <td>4세</td>
+                                <td><button class="list-comment-btn" onclick="javascript:openForm()">알림장</button></td>
+                            </tr>
+                            <tr>
+                                <td>이예인</td>
+                                <td>3세</td>
+                                <td><button class="list-comment-btn" onclick="javascript:openForm()">알림장</button></td>
+                            </tr>
+                            <tr>
+                                <td>신은지</td>
+                                <td>5세</td>
+                                <td><button class="list-comment-btn" onclick="javascript:openForm()">알림장</button></td>
+                            </tr>
+                            <tr>
+                                <td>황연정</td>
+                                <td>4세</td>
+                                <td><button class="list-comment-btn" onclick="javascript:openForm()">알림장</button></td>
+                            </tr>
+                            <tr>
+                                <td>홍길동</td>
+                                <td>3세</td>
+                                <td><button class="list-comment-btn" onclick="javascript:openForm()">알림장</button></td>
+                            </tr>
+                            <tr>
+                                <td>뿡뿡이</td>
+                                <td>3세</td>
+                                <td><button class="list-comment-btn" onclick="javascript:openForm()">알림장</button></td>
+                            </tr>
+                            <tr>
+                                <td>강얼지</td>
+                                <td>5세</td>
+                                <td><button class="list-comment-btn" onclick="javascript:openForm()">알림장</button></td>
+                            </tr>
+                            <tr>
+                                <td>김이름</td>
+                                <td>3세</td>
+                                <td><button class="list-comment-btn" onclick="javascript:openForm()">알림장</button></td>
+                            </tr>
+                            <tr>
+                                <td>오복숭</td>
+                                <td>4세</td>
+                                <td><button class="list-comment-btn" onclick="javascript:openForm()">알림장</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 오른쪽 폼(공통 내용) -->
+                <div class="form-box" id="formAreaAll">
+                    <div class="form-content">
+                        <button class="x-btn" onclick="closeForm()">X</button>
+                        <h3 style="padding: 15px; padding-top: 25px;">알림장 공통 내용 작성</h3>
+                        <textarea placeholder="전달할 내용(이건 쓰지마세요):&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;*준비물:"></textarea>
+                        <button class="save-btn">저장</button>
+                    </div>
+                </div>
+
+                <!-- 오른쪽 폼(개인 알림장) -->
+                <div class="form-box" id="formArea">
+                    <div class="form-content">
+                        <button class="x-btn" onclick="closeForm()">X</button>
+                        <h3 style="padding: 15px; padding-top: 25px;">OOO의 알림장 내용 작성</h3>
+                        <textarea placeholder="전달할 내용(이건 쓰지마세요):&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;*준비물:"></textarea>
+                        <button class="save-btn">저장</button>
+                    </div>
                 </div>
             </div>
         </section>

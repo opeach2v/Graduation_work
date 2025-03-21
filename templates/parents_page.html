@@ -3,14 +3,18 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Django에서만 작동 -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- live server에서만 작동 -->
+    <link rel="stylesheet" href="../static/css/style.css">
     <title>어린이가 위험해요!</title>
 </head>
 <body>
     {% block asd %}
     {% endblock %}
     <header>
-        <img src="ku_logo.jpg" alt="경남대 로고" class="logo-img"><h1>OOO 학부모님, 반갑습니다!</h1><h4>로그아웃</h4>
+        <img src="../ku_logo.jpg" alt="경남대 로고" class="logo-img"><h1>OOO 학부모님, 반갑습니다!</h1><h4>로그아웃</h4>
     </header>
 </body>
 </html>

@@ -3,13 +3,17 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Django에서만 작동 -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- live server에서만 작동 -->
+    <link rel="stylesheet" href="../static/css/style.css">
     <title>어린이가 위험해요!</title>
 </head>
 <body>
     {% block asd %}
     {% endblock %}
-    <h1>로그인</h1>
+    <h3>로그인</h3>
     
 </body>
 </html>
