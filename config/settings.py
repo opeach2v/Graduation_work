@@ -19,7 +19,6 @@ TEMPLATE_DIR = BASE_DIR / 'templates'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR/ 'media'
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
@@ -68,6 +67,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },
