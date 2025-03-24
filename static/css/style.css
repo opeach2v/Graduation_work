@@ -177,10 +177,31 @@ textarea {
     color: black;
     font-size: 15px;
     font-weight: bold;
-    border: 1px solid #46e5fa;
+    border: none;
     border-radius: 8px;;
     padding: 6px 15px;
     margin-top: 10px;
+    cursor: pointer;
+}
+
+.save-btn:hover {
+    background-color: #29e4f1;
+}
+
+.delete-btn {
+    background-color: #c1ee9c;
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;;
+    padding: 8px 15px;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background-color: #a9f16e;
 }
 
 /* 테이블(aka 리스트) 스타일 */

@@ -13,8 +13,27 @@
 <body>
     {% block asd %}
     {% endblock %}
-    <header>
-        <img src="../logo.png" alt="404 로고" class="logo-img"><h1>OOO 학부모님, 반갑습니다!</h1><h4>로그아웃</h4>
-    </header>
+   <!-- 메인 영역 -->
+    <!-- Django에서만 작동 -->
+    <script src="{% static 'js/page.js' %}"></script>
+    <!-- live server에서만 작동 -->
+    <script src="../static/js/page.js"></script>
+    <main class="main-container">
+        <header class="site-header">
+            <div class="logo-area">
+                <a href=".">    <!-- 이미지 누르면 새로고침 되는.. -->
+                    <img src="{{ MEDIA_URL }}logo.png" alt="로고" class="logo-img"></a>
+                <h1 style="font-size: 32px; padding-left: 15px;">석승주 선생님, 반갑습니다!</h1>
+            </div>
+            <nav class="header-nav">
+                <ul>
+                    <li><a href="main.html">로그아웃</a></li>
+                </ul>
+            </nav>
+        </header>
+        <section class="homework-container" id="homeworkContainer">
+            <div class="homework-box">
+            </div>
+        </section>
 </body>
 </html>

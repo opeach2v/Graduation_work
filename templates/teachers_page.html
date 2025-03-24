@@ -21,13 +21,13 @@
     <main class="main-container">
         <header class="site-header">
             <div class="logo-area">
-                <a href=".">
+                <a href=".">    <!-- 이미지 누르면 새로고침 되는.. -->
                     <img src="{{ MEDIA_URL }}logo.png" alt="로고" class="logo-img"></a>
                 <h1 style="font-size: 32px; padding-left: 15px;">석승주 선생님, 반갑습니다!</h1>
             </div>
             <nav class="header-nav">
                 <ul>
-                    <li><a href="main.html">로그아웃</a></li>
+                    <li><a href="templates/main.html">로그아웃</a></li>
                 </ul>
             </nav>
         </header>
@@ -114,7 +114,8 @@
                         <button class="x-btn" onclick="closeForm()">X</button>
                         <h3 style="padding: 15px; padding-top: 25px;">OOO의 알림장 내용 작성</h3>
                         <textarea placeholder="전달할 내용(이건 쓰지마세요):&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;*준비물:"></textarea>
-                        <button class="save-btn">저장</button>
+                        <button class="save-btn">저장</button><br>
+                        <button class="delete-btn">전체 내용 삭제</button>
                     </div>
                 </div>
             </div>
