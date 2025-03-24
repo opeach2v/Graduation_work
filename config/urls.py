@@ -18,6 +18,8 @@ from django.contrib import admin
 from django.urls import path
 from config.views import main, parentsPage, teachersPage
 from usersDB.views import dbtest, add_data, get_data, delete_data
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,4 +30,4 @@ urlpatterns = [
     path("delete/", delete_data, name="delete_data"),
     path("parents_page/", parentsPage, name="parents_page"),
     path("teachers_page/", teachersPage, name="teachers_page"),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
