@@ -9,7 +9,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'KNPSKkomi';
+    font-family: 'KNPSKkomi', sans-serif;
 }
 
 body {
@@ -55,7 +55,7 @@ body {
 }
 
 .logo-img {
-    width: 100px;
+    width: 65px;
     /* 로고 크기 */
     height: auto;
 }
