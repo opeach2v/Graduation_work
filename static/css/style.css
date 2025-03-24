@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'KNPSKkomi';
-    src: url('../../KNPSKkomi.otf') format('opentype');
+    src: url('/static/fonts/KNPSKkomi.otf') format('opentype');
     font-size: 18px;
 }
 
