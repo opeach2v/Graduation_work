@@ -142,8 +142,10 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'static'),   # 소스 정적파일 들(개발용)
 )
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # collectstatic 명령어로 결과물이 모이는 곳 (배포용)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
