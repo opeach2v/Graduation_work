@@ -21,10 +21,17 @@ body {
 }
 
 .logo-img {
+    display: inline-block;
     width: 85px;
-    /* 로고 크기 */
     height: auto;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+}
+
+.title {
+    display: inline-block;
+    width: 170px;
+    height: auto;
+    margin-bottom: 10px;
 }
 
 /* 메인 컨테이너 */
