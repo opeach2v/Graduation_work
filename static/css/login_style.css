@@ -54,13 +54,12 @@ body {
 .login-container {
     margin: auto;
     width: 90%;
-    height: 440px;
+    height: 460px;
 }
 
 .login-box {
     display: flex;
     flex-direction: column;
-
     background-color: #ffffff;
     padding: 25px;
     border-radius: 15px;
