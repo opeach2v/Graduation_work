@@ -1,0 +1,113 @@
+@font-face {
+    font-family: 'KNPSKkomi';
+    src: url('/static/fonts/KNPSKkomi.otf') format('opentype');
+    font-size: 18px;
+}
+
+/* 기본 스타일 초기화 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'KNPSKkomi', sans-serif;
+}
+
+body {
+    background-color: #fffdf2;
+}
+
+.logo-area {
+    text-align: center;
+    margin: 6px;
+}
+
+.logo-img {
+    width: 80px;
+    /* 로고 크기 */
+    height: auto;
+}
+
+/* 메인 컨테이너 */
+.main-container {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    width: 400px;
+    margin: 140px auto;
+    /* 가운데 정렬 */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border: 2px solid #f7f097;
+    border-radius: 20px;
+    background-color: #fffddf;
+    border-bottom: 3px solid #eee;
+}
+
+/* 로그인 컨테이너 */
+.login-container {
+    margin: auto;
+    width: 90%;
+    height: 400px;
+}
+
+.login-box {
+    display: flex;
+    flex-direction: column;
+
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 15px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+label {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    text-align: left;
+    color: #555;
+    font-weight: bold;
+}
+
+input {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 10px;
+    background-color: #315ff8fd;
+    color: #ffffff;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+p.register {
+    font-size: 15px;
+    color: #707070;
+    text-align: center;
+    margin: 10px auto;
+}
+
+p.register a {
+    color: #37219b;
+    text-decoration: none;
+    margin: 0 6px;
+}
+
+p.register a:hover {
+    color: #0c90e7;
+    text-decoration: underline;
+}

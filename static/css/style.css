@@ -13,7 +13,6 @@
 }
 
 body {
-    /* font-family: sans-serif; */
     background-color: #fffdf2;
 }
 
@@ -60,7 +59,7 @@ body {
     height: auto;
 }
 
-/* 메인 컨테이너 (통계, 학생 영역 공통) */
+/* 메인 컨테이너 */
 .main-container {
     padding-top: 50px;
     padding-bottom: 50px;

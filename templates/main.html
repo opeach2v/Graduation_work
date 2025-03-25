@@ -5,15 +5,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Django에서만 작동 -->
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" href="{% static 'media/web-logo.png' %}">
+    <link rel="apple-touch-icon" href="{% static 'media/web-logo.png' %}">
     <!-- live server에서만 작동 -->
-    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="icon" href="../media/web-logo.png">
+    <link rel="apple-touch-icon" href="../media/web-logo.png">
+    <!-- Django에서만 작동 -->
+    <link rel="stylesheet" href="{% static 'css/login_style.css' %}">
+    <!-- live server에서만 작동 -->
+    <link rel="stylesheet" href="../static/css/login_style.css">
     <title>어린이가 위험해요!</title>
 </head>
 <body>
     {% block asd %}
     {% endblock %}
-    <h3>로그인</h3>
+    <main class="main-container">
+        <section class="login-container">
+            <div class="logo-area"><img src="{{ MEDIA_URL }}logo.png" alt="로고" class="logo-img"></div>
+            <div class="login-box">
+                <label for="login">Username:</label>
+                <input type="text" id="login" name="login" placeholder="Enter your username" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                <br>
+                <button type="submit" class="login-btn">로그인</button>
+                <p class="register">계정이 없으신가요? <a href="#">회원가입</a></p>
+            </div>
+        </section>
     
+    </main>
 </body>
 </html>
