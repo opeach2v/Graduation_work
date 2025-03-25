@@ -18,18 +18,18 @@ body {
 
 .logo-area {
     text-align: center;
-    margin: 6px;
 }
 
 .logo-img {
-    width: 80px;
+    width: 100px;
     /* 로고 크기 */
     height: auto;
+    margin-bottom: 15px;
 }
 
 /* 메인 컨테이너 */
 .main-container {
-    padding-top: 50px;
+    padding-top: 30px;
     padding-bottom: 50px;
     width: 400px;
     margin: 140px auto;
