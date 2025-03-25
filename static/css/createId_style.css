@@ -54,7 +54,7 @@ body {
 .create-container {
     margin: auto;
     width: 90%;
-    height: 650px;
+    height: 620px;
 }
 
 .create-box {
@@ -115,7 +115,7 @@ input {
     border-radius: 5px;
 }
 
-.login-btn {
+.createId-btn {
     width: 100%;
     padding: 8px;
     border: none;
@@ -128,24 +128,6 @@ input {
     margin-bottom: 20px;
 }
 
-.login-btn:hover {
+.createId-btn:hover {
     background-color: #1445e4;
-}
-
-p.register {
-    font-size: 15px;
-    color: #707070;
-    text-align: center;
-    margin: 10px auto;
-}
-
-p.register a {
-    color: #37219b;
-    text-decoration: none;
-    margin: 0 6px;
-}
-
-p.register a:hover {
-    color: #0c90e7;
-    text-decoration: underline;
 }

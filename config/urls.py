@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from config.views import main, parentsPage, teachersPage, creatIdPage
+from config.views import main, parentsPage, teachersPage, createIdPage
 from usersDB.views import dbtest, add_data, get_data, delete_data
 from django.conf import settings
 from django.conf.urls.static import static
@@ -30,7 +30,7 @@ urlpatterns = [
     path("delete/", delete_data, name="delete_data"),
     path("parents_page/", parentsPage, name="parents_page"),
     path("teachers_page/", teachersPage, name="teachers_page"),
-    path("createId_page/", creatIdPage, name="createId_page"),
+    path("createId_page/", createIdPage, name="createId_page"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:

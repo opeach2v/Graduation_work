@@ -19,7 +19,7 @@ def teachersPage(request):
         'MEDIA_URL': settings.MEDIA_URL,
     })
 
-def creatIdPage(request):
+def createIdPage(request):
     return render(request, 'createId_page.html', {
         'MEDIA_URL': settings.MEDIA_URL,
     })

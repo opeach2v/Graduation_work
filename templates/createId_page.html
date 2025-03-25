@@ -13,7 +13,7 @@
     <!-- Django에서만 작동 -->
     <link rel="stylesheet" href="{% static 'css/createId_style.css' %}">
     <!-- live server에서만 작동 -->
-    <link rel="stylesheet" href="../static/css/creatId_style.css">
+    <link rel="stylesheet" href="../static/css/createId_style.css">
     <title>어린이가 위험해요!</title>
 </head>
 <body>
@@ -31,17 +31,15 @@
                     <input type="radio" name="role" id="parent" value="parent"><label for="parent" class="select-label">학부모</label>
                 </div>
                 <label for="login">Username:</label>
-                <input type="text" id="login" name="login" placeholder="Enter your username" required>
+                <input type="text" id="login" name="login" placeholder="Enter your username *" required>
                 <label for="password">Password:</label>
-                <input type="password" id="password" name="password" placeholder="Enter your password" required>
-                <label for="checkPassword">Password:</label>
-                <input type="password" id="checkPassword" name="checkPassword" placeholder="Check your password" required>
+                <input type="password" id="password" name="password" placeholder="Enter your password *" required>
+                <label for="checkPassword">Cheak Password:</label>
+                <input type="password" id="checkPassword" name="checkPassword" placeholder="Check your password *" required>
                 <label for="name">Name:</label>
-                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                <input type="text" id="name" name="name" placeholder="Enter your name *" required>
                 <br>
-                <button type="button" class="login-btn" onclick="location.href='../teachers_page/'">로그인</button>
-                <!-- <button type="submit" class="login-btn" >로그인</button> -->
-                <p class="register">계정이 없으신가요? <a href="../creatId_page/">회원가입</a></p>
+                <button type="button" class="createId-btn" onclick="location.href='../'">저장</button>
             </div>
         </section>
     </main>
