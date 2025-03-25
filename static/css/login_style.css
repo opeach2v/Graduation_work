@@ -21,7 +21,7 @@ body {
 }
 
 .logo-img {
-    width: 100px;
+    width: 85px;
     /* 로고 크기 */
     height: auto;
     margin-bottom: 15px;
@@ -29,7 +29,7 @@ body {
 
 /* 메인 컨테이너 */
 .main-container {
-    padding-top: 30px;
+    padding-top: 20px;
     padding-bottom: 50px;
     width: 400px;
     margin: 140px auto;
