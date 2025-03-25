@@ -94,6 +94,10 @@ input {
     margin-bottom: 20px;
 }
 
+.login-btn:hover {
+    background-color: #1445e4;
+}
+
 p.register {
     font-size: 15px;
     color: #707070;
