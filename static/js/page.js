@@ -52,20 +52,3 @@ function closeForm() {
 
     container.classList.remove('open');
 }
-
-// 로그인 페이지 로그인 버튼 임시
-function login() {
-    const id = document.getElementById('id').value;
-    const pw = document.getElementById('password').value;
-
-    if (id == '' && pw == '') {
-        alert('아이디와 비밀번호를 입력해주세요.');
-        return;
-    }
-    if (id == 'aaa' && pw == 'bbb') {
-        alert('아이디와 비밀번호가 틀렸습니다.');
-        return;
-    }
-
-    window.location.href = 'teachers_page.html';
-}
