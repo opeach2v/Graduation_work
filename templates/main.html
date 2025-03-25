@@ -25,6 +25,10 @@
                 <img src="{{ MEDIA_URL }}webLogo.png" alt="로고" class="logo-img"><img src="{{ MEDIA_URL }}login_title.png" alt="타이틀" class="title"><br>
             </div>
             <div class="login-box">
+                <div class="select">
+                    <input type="radio" name="role" id="teacher" value="teacher" checked><label for="teacher" class="select-label">선생님</label>
+                    <input type="radio" name="role" id="parent" value="parent"><label for="parent" class="select-label">학부모</label>
+                </div>
                 <label for="login">Username:</label>
                 <input type="text" id="login" name="login" placeholder="Enter your username" required>
                 <label for="password">Password:</label>
