@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Django에서만 작동 -->
+    <link rel="icon" href="{% static 'media/webLogo.png' %}">
+    <link rel="apple-touch-icon" href="{% static 'media/webLogo.png' %}">
+    <!-- live server에서만 작동 -->
+    <link rel="icon" href="../media/webLogo.png">
+    <link rel="apple-touch-icon" href="../media/webLogo.png">
+    <!-- Django에서만 작동 -->
+    <link rel="stylesheet" href="{% static 'css/createId_style.css' %}">
+    <!-- live server에서만 작동 -->
+    <link rel="stylesheet" href="../static/css/creatId_style.css">
+    <title>어린이가 위험해요!</title>
+</head>
+<body>
+    {% block asd %}
+    {% endblock %}
+    <main class="main-container">
+        <section class="create-container">
+            <div class="logo-area">
+                <img src="{{ MEDIA_URL }}webLogo.png" alt="로고" class="logo-img"><img src="{{ MEDIA_URL }}login_title.png" alt="타이틀" class="title"><br>
+            </div>
+            <div class="create-box">
+                <h2 style="text-align: center; margin-bottom: 10px;">회원가입</h2>
+                <div class="select">
+                    <input type="radio" name="role" id="teacher" value="teacher" checked><label for="teacher" class="select-label">선생님</label>
+                    <input type="radio" name="role" id="parent" value="parent"><label for="parent" class="select-label">학부모</label>
+                </div>
+                <label for="login">Username:</label>
+                <input type="text" id="login" name="login" placeholder="Enter your username" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                <label for="checkPassword">Password:</label>
+                <input type="password" id="checkPassword" name="checkPassword" placeholder="Check your password" required>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                <br>
+                <button type="button" class="login-btn" onclick="location.href='../teachers_page/'">로그인</button>
+                <!-- <button type="submit" class="login-btn" >로그인</button> -->
+                <p class="register">계정이 없으신가요? <a href="#">회원가입</a></p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
