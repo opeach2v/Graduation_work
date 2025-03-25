@@ -1,39 +1,75 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Django에서만 작동 -->
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <!-- live server에서만 작동 -->
-    <link rel="stylesheet" href="../static/css/style.css">
-    <title>어린이가 위험해요!</title>
-</head>
-<body>
-    {% block asd %}
-    {% endblock %}
-   <!-- 메인 영역 -->
-    <!-- Django에서만 작동 -->
-    <script src="{% static 'js/page.js' %}"></script>
-    <!-- live server에서만 작동 -->
-    <script src="../static/js/page.js"></script>
-    <main class="main-container">
-        <header class="site-header">
-            <div class="logo-area">
-                <a href=".">    <!-- 이미지 누르면 새로고침 되는.. -->
-                    <img src="{{ MEDIA_URL }}logo.png" alt="로고" class="logo-img"></a>
-                <h1 style="font-size: 32px; padding-left: 15px;">석승주 선생님, 반갑습니다!</h1>
-            </div>
-            <nav class="header-nav">
-                <ul>
-                    <li><a href="main.html">로그아웃</a></li>
-                </ul>
-            </nav>
-        </header>
-        <section class="homework-container" id="homeworkContainer">
-            <div class="homework-box">
-            </div>
-        </section>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Django에서만 작동 -->
+        <link rel="icon" href="{% static 'media/webLogo.png' %}">
+        <link rel="apple-touch-icon" href="{% static 'media/webLogo.png' %}">
+        <!-- live server에서만 작동 -->
+        <link rel="icon" href="../media/webLogo.png">
+        <link rel="apple-touch-icon" href="../media/webLogo.png">
+        <!-- Django에서만 작동 -->
+        <link rel="stylesheet" href="{% static 'css/parents_style.css' %}">
+        <!-- live server에서만 작동 -->
+        <link rel="stylesheet" href="../static/css/parents_style.css">
+        <title>어린이가 위험해요!</title>
+    </head>
+    <body>
+        {% block asd %}
+        {% endblock %}
+        <!-- 메인 영역 -->
+        <!-- Django에서만 작동 -->
+        <script src="{% static 'js/parents_page.js' %}"></script>
+        <!-- live server에서만 작동 -->
+        <script src="../static/js/parents_page.js"></script>
+        <main class="main-container">
+            <header class="site-header">
+                <nav class="header-nav">
+                    <ul>
+                        <li><a href="../">로그아웃</a></li>
+                    </ul>
+                </nav>
+                <div class="logo-area">
+                    <a href=".">    <!-- 이미지 누르면 새로고침 되는.. -->
+                        <img src="{{ MEDIA_URL }}webLogo.png" alt="로고" class="logo-img"></a>
+                </div>
+                <h1 style="font-size: 25px; padding-left: 15px; margin: 5px;">문민들레 학부모님, 반갑습니다!</h1>
+            </header>
+            <section class="homework-container" id="homeworkContainer">
+                <div class="homework-box">
+                    <div class="homework-list-box">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>이름</th>
+                                    <th>나이</th>
+                                    <th><button class="list-comment-btn" onclick="javascript:openFormAll()">공통 내용</button></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>고우람</td>
+                                    <td>5세</td>
+                                    <td><button class="list-comment-btn" onclick="javascript:openForm()">알림장</button></td>
+                                </tr>
+                                <tr>
+                                    <td>고보람</td>
+                                    <td>3세</td>
+                                    <td><button class="list-comment-btn" onclick="javascript:openForm()">알림장</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div><br>
+                <div class="other-box">
+                    <p class="headline"><img src="{{ MEDIA_URL }}icon_call.png" alt="전화 아이콘" class="img-icon">053-1234-5678</p><br>
+                    <p class="headline"><img src="{{ MEDIA_URL }}icon_email.png" alt="이메일 아이콘" class="img-icon">ppi_ppiyong@kindergarden.com</p><br>
+                    <p class="headline"><img src="{{ MEDIA_URL }}icon_where.png" alt="위치 아이콘" class="img-icon">유치원 위치</p>
+                    <div style="text-align: center;"><img src="{{ MEDIA_URL }}map.png" alt="지도" class="map-img"></div>
+                </div>
+            </section>
+        </main>
+    </body>
 </html>
