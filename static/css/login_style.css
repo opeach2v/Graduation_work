@@ -31,7 +31,7 @@ body {
 .main-container {
     padding-top: 20px;
     padding-bottom: 50px;
-    width: 420px;
+    width: 400px;
     margin: 140px auto;
     /* 가운데 정렬 */
     display: flex;
@@ -47,7 +47,7 @@ body {
 .login-container {
     margin: auto;
     width: 90%;
-    height: 400px;
+    height: 420px;
 }
 
 .login-box {
