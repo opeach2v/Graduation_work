@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
 from config.views import main, parentsPage, teachersPage, createIdPage
 from usersDB.views import dbtest, add_data, get_data, delete_data
 from django.conf import settings
@@ -31,6 +31,7 @@ urlpatterns = [
     path("parents_page/", parentsPage, name="parents_page"),
     path("teachers_page/", teachersPage, name="teachers_page"),
     path("createId_page/", createIdPage, name="createId_page"),
+    path('users/', include('graduation_work.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
