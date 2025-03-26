@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import db_collections
+from .models import db_collection
 
 def index(request):
     return HttpResponse("<h1>App is running</h1>")
@@ -12,7 +12,7 @@ def add_users(request):
         "role": "teacher",
         "name": "홍길동"
     }
-    db_collections.insert_one(records)
+    db_collection.insert_one(records)
     return HttpResponse("New users added")
 
 def show_users(request):
