@@ -8,10 +8,10 @@ def index(request):
 
 def add_users(request):
     data = {
-        "username": "hong2",
-        "password": "hong1234",
-        "role": "teacher",
-        "name": "홍길동"
+        "username": "jang",
+        "password": "jang1234",
+        "role": "parent",
+        "name": "장혜진"
     }
 
     db_collection.insert_one(data)
