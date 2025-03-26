@@ -19,7 +19,7 @@ def add_users(request):
 
 def show_users(request):
     users = []
-    for users in db_collection.find({}):
+    for doc in db_collection.find({}):
         username = doc.get("username")
         password = doc.get("password")
         role = doc.get("role")
