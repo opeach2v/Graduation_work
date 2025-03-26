@@ -7,18 +7,19 @@ def index(request):
     return HttpResponse("<h1>App is running</h1>")
 
 def add_users(request):
-    records = {
+    data = {
         "username": "hong2",
         "password": "hong1234",
         "role": "teacher",
         "name": "홍길동"
     }
-    db_collection.insert_one(records)
-    return HttpResponse("New users added")
+
+    db_collection.insert_one(data)
+    return JsonResponse({"message" : "Data saved successfully"})
 
 def show_users(request):
     users = []
-    for doc in db_collection.find({}):
+    for users in db_collection.find({}):
         username = doc.get("username")
         password = doc.get("password")
         role = doc.get("role")
