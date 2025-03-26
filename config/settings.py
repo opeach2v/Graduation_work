@@ -35,6 +35,7 @@ ALLOWED_HOSTS = ['13.209.113.91']
 
 INSTALLED_APPS = [
     "usersDB",
+    "graduation_work",
 
     'django.contrib.admin',
     'django.contrib.auth',
