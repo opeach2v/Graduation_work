@@ -25,4 +25,4 @@ def show_users(request):
         name = doc.get("name")
         users.append({"username": username, "password": password, "role": role, "name": name})
     
-    return JsonResponse({'users': users})
+    return JsonResponse({'users': users}, safe=False, json_dumps_params={'ensure_ascii': False}, content_type="application/json; charset=UTF-8")
