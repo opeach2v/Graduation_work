@@ -16,5 +16,12 @@ def add_users(request):
     return HttpResponse("New users added")
 
 def show_users(request):
-    db = db_collection.find()
-    return (db)
+    users = []
+    for doc in db_collection.find({}):
+        username = doc.get("username")
+        password = doc.get("password")
+        role = doc.get("role")
+        name = doc.get("name")
+        users.append({"username": username, "password": password, "role": role, "name": name})
+    
+    return JsonResponse({'users': users})
