@@ -16,5 +16,5 @@ def add_users(request):
     return HttpResponse("New users added")
 
 def show_users(request):
-    db = db_collections.find()
+    db = db_collection.find()
     return (db)
