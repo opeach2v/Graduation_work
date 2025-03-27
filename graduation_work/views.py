@@ -47,10 +47,11 @@ def login_user(request):
             username = request.POST.get('username')
             password = request.POST.get('password')
             role = request.POST.get('role')
-            print(f"username: {username}, password: {password}, role: {role}")  # Debugging
 
             # 데이터 조회 (username, password가 일치하는 데이터가 있는지 확인)
             user_data = users_collection.find_one({"username": username, "password": password, "role": role})
+
+            print(f"user_data" : {user_data})  # Debugging
 
             if user_data:
 
