@@ -66,10 +66,10 @@ def login_user(request):
     return render(request, 'graduation_work/main.html')
 
 def parentsPage(request):
-    return render(request, 'parents_page.html')
+    return render(request, 'graduation_work/parents_page.html')
 
 def teachersPage(request):
-    return render(request, 'teachers_page.html')
+    return render(request, 'graduation_work/teachers_page.html')
 
 def show_users(request):
     users = []
