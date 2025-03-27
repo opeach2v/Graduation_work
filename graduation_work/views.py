@@ -74,7 +74,7 @@ def login_user(request):
 
         except Exception as e:
             return JsonResponse({"login error" : str(e)}, status=500)
-    return render(request, 'graduation_work/main.html')
+    # return render(request, 'graduation_work/main.html')
 
 def parentsPage(request):
     return render(request, 'graduation_work/parents_page.html')
