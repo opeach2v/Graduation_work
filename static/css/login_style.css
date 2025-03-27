@@ -41,7 +41,6 @@ body {
     justify-content: center; /* 세로 중앙 정렬 */
     align-items: center; /* 가로 중앙 정렬 */
     height: auto;
-    min-height: 100vh;
     padding-top: 30px;
     padding-bottom: 50px;
     width: 400px;
