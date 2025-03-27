@@ -1,7 +1,8 @@
 from django.views.decorators.csrf import csrf_exempt
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from datetime import datetime
+from django.contrib.auth import login, authenticate
 from .models import users_collection
 
 # 로그인 페이지 (메인)
