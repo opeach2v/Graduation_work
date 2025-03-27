@@ -29,7 +29,7 @@
                 <form method="POST" action="{% url 'add_users' %}">
                     {% csrf_token %}
                     <div class="select">
-                        <input type="radio" name="role" id="teacher" value="teacher" checked><label for="teacher" class="select-label">선생님</label>
+                        <input type="radio" name="role" id="teacher" value="teacher"><label for="teacher" class="select-label">선생님</label>
                         <input type="radio" name="role" id="parent" value="parent"><label for="parent" class="select-label">학부모</label>
                     </div>
                     <label for="username">Username:</label>
