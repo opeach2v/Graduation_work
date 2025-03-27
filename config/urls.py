@@ -23,9 +23,6 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('graduation_work.urls')),  # graduation_work 앱으로 위임
-    path("parents_page/",  include('graduation_work.urls')),
-    path("teachers_page/",  include('graduation_work.urls')),
-    path("signup/", include('graduation_work.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
