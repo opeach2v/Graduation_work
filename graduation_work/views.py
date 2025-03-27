@@ -52,11 +52,11 @@ def login_user(request):
             user_data = users_collection.find_one({"username": username, "password": password, "role": role})
             print(f"user_data: {user_data}")  # Debugging
             if user_data:
-
                 # MongoDB에서 찾아온 데이터를 Django의 User 모델로 변환
-                user = authenticate(username=username, password=password)  # Django User 모델로 인증
+                user = authenticate(username=username, password=password, role=role)  # Django User 모델로 인증
                 if user is not None:
                     login(request, user)    # Django의 인증 시스템에서 사용되는 함수. 세션에 사용자의 정보를 저장해 해당 사용자가 인증된 상태임을 기록함
+                    role = user_data.get("role", [""])[3]
                     # role에 따라 리디렉션
                     if role == "parent":    # 부모님
                         return redirect('parents_page')
