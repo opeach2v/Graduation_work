@@ -50,11 +50,11 @@ def login_user(request):
 
             if data is not None:
                 # 로그인 성공
-                login(request, data)    # Django의 인증 시스템에서 사용되는 함수. 세션에 사용자의 정보를 저장해 해당 사용자가 인증된 상태임을 기록함
+                login(request, user)    # Django의 인증 시스템에서 사용되는 함수. 세션에 사용자의 정보를 저장해 해당 사용자가 인증된 상태임을 기록함
                 # role에 따라 리디렉션
-                if data.get("role") == "parent":    # 부모님
+                if user.role == "parent":    # 부모님
                     return redirect('parents_page')
-                elif data.get("role") == "teacher": # 선생님
+                elif user.role == "teacher": # 선생님
                     return redirect('teachers_page')
             else:
                 # 로그인 실패
