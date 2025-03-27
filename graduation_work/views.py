@@ -7,7 +7,7 @@ def index(request):
     return HttpResponse("<h1>App is running</h1>")
 
 def add_users(request):
-    try {
+    try:
         data = {
         "username": "jang",
         "password": "jang1234",
@@ -18,8 +18,8 @@ def add_users(request):
 
     users_collection.insert_one(data)
     return JsonResponse({"message" : "Data saved successfully"})
-    }
-    catch Exception as e:
+
+    except catch Exception as e:
         return JsonResponse({"error" : str(e)}, status=500)
 
 def show_users(request):
