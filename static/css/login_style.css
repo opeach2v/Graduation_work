@@ -44,7 +44,7 @@ body {
     /* 가운데 정렬 */
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
+    justify-content: flex-start;
     gap: 20px;
     border: 2px solid #f7f097;
     border-radius: 20px;
