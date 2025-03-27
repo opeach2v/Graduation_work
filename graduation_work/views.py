@@ -46,9 +46,10 @@ def login_user(request):
             # POST 데이터 받기
             username = request.POST.get('username')
             password = request.POST.get('password')
+            role = request.POST.get('role')
 
             # 데이터 조회 (username, password가 일치하는 데이터가 있는지 확인)
-            user_data = users_collection.find_one({"username": username, "password": password})
+            user_data = users_collection.find_one({"username": username, "password": password, "role": role})
 
             if user_data:
 
@@ -73,6 +74,7 @@ def login_user(request):
 
         except Exception as e:
             return JsonResponse({"login error" : str(e)}, status=500)
+    return render(request, 'graduation_work/main.html')
 
 def parentsPage(request):
     return render(request, 'graduation_work/parents_page.html')
