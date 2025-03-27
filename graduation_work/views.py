@@ -16,10 +16,10 @@ def add_users(request):
     if request.method == 'POST':
         try:
             # POST 데이터 받기
-            username = request.POST.get('username'),
-            password = request.POST.get('password'),
-            role = request.POST.get('role'),
-            name = request.POST.get('name'),
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+            role = request.POST.get('role')
+            name = request.POST.get('name')
 
             # 데이터 생성
             data = {
@@ -32,7 +32,7 @@ def add_users(request):
 
             # mongoDB에 저장
             users_collection.insert_one(data)
-            return render(request, 'graduation_work/main.html')
+            return redirect('login_user')  # 회원가입 후 로그인 페이지로 리다이렉션
         except Exception as e:
             return JsonResponse({"signup error" : str(e)}, status=500)
 
