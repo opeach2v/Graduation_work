@@ -75,7 +75,7 @@ def login_user(request):
     # return render(request, 'graduation_work/main.html')
 
 def parentsPage(request):
-    name = request.session.get('user')  # 세션에 저장했던 값 꺼냄
+    name = request.session.get('name')  # 세션에 저장했던 값 꺼냄
 
     return render(request, 'graduation_work/parents_page.html', {
         'name' : name
