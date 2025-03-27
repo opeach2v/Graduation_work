@@ -54,9 +54,8 @@ def login_user(request):
             print(f"user_data: {user_data}")  # Debugging
             if user_data:
                 # 세션에 사용자 정보 수동으로 저장
-                request.session['username'] = user_data.get("username", [""])[0]
-                request.session['password'] = user_data.get("password", [""])[0]
-                request.session['role'] = user_data.get("role", [""])[0]
+                request.session['username'] = user_data.get("username")
+                request.session['role'] = user_data.get("role")
                 
                 # role에 따라 리디렉션
                 if role == "parent":    # 부모님
@@ -65,7 +64,7 @@ def login_user(request):
                     return redirect('teachers_page')
                 else:
                     # 로그인 실패
-                    return render(request, 'graduation_work/main.html', {'error': '학부모와 선생님을 다시 골라주세요.'})
+                    return render(request, 'graduation_work/main.html', {'error': '학부모와 선생님을 다시 선택해주세요.'})
             else:
                 # 로그인 실패
                 return render(request, 'graduation_work/main.html', {'error': '아이디 또는 비밀번호가 일치하지 않습니다.'})
