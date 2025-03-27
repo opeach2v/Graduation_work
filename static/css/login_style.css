@@ -36,6 +36,7 @@ body {
 
 /* 메인 컨테이너 */
 .main-container {
+    min-height: 100vh;
     padding-top: 30px;
     padding-bottom: 50px;
     width: 400px;
@@ -54,7 +55,6 @@ body {
 .login-container {
     margin: auto;
     width: 90%;
-    height: auto;
 }
 
 .login-box {
