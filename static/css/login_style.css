@@ -36,15 +36,15 @@ body {
 
 /* 메인 컨테이너 */
 .main-container {
-    min-height: 100vh;
+    display: flex; /* Flexbox로 설정 */
+    flex-direction: column; /* 자식 요소들을 세로로 쌓기 */
+    justify-content: center; /* 세로 중앙 정렬 */
+    align-items: center; /* 가로 중앙 정렬 */
+    min-height: 100vh; /* 화면 높이에 맞게 최소 높이 설정 */
     padding-top: 30px;
     padding-bottom: 50px;
     width: 400px;
-    margin: 140px auto;
-    /* 가운데 정렬 */
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    margin: 0 auto; /* 화면 중앙 정렬 */
     border: 2px solid #f7f097;
     border-radius: 20px;
     background-color: #fffddf;
@@ -53,11 +53,12 @@ body {
 
 /* 로그인 컨테이너 */
 .login-container {
-    width: 90%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
+    display: flex; /* Flexbox로 설정 */
+    flex-direction: column; /* 세로로 나열 */
+    width: 100%; /* 부모에 맞춰 늘어남 */
+    justify-content: center; /* 세로 중앙 정렬 */
+    flex-grow: 1; /* 화면이 늘어나면 비례적으로 커짐 */
+    padding: 10px;
 }
 
 .login-box {
@@ -67,7 +68,8 @@ body {
     padding: 25px;
     border-radius: 15px;
     width: 100%;
-    margin: 0 auto;
+    margin: 0 auto; /* 가운데 정렬 */
+    box-sizing: border-box;
 }
 
 .select {
