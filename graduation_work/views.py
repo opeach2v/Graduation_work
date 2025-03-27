@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import JsonResponse
 from .models import users_collection
+from datetime import datetime
 
 def index(request):
     return HttpResponse("<h1>App is running</h1>")
