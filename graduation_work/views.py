@@ -56,19 +56,15 @@ def login_user(request):
                 request.session['username'] = user_data.get("username", [""])[0]
                 request.session['password'] = user_data.get("password", [""])[0]
                 request.session['role'] = user_data.get("role", [""])[0]
-
-                if user is not None:
-                    # role에 따라 리디렉션
-                    if role == "parent":    # 부모님
-                        return redirect('parents_page')
-                    elif role == "teacher": # 선생님
-                        return redirect('teachers_page')
-                    else:
-                        # 로그인 실패
-                        return render(request, 'graduation_work/main.html', {'error': '학부모와 선생님을 다시 골라주세요.'})
+                
+                # role에 따라 리디렉션
+                if role == "parent":    # 부모님
+                    return redirect('parents_page')
+                elif role == "teacher": # 선생님
+                    return redirect('teachers_page')
                 else:
                     # 로그인 실패
-                    return render(request, 'graduation_work/main.html', {'error': '유저를 찾을 수 없습니다.'})
+                    return render(request, 'graduation_work/main.html', {'error': '학부모와 선생님을 다시 골라주세요.'})
             else:
                 # 로그인 실패
                 return render(request, 'graduation_work/main.html', {'error': '아이디 또는 비밀번호가 일치하지 않습니다.'})
