@@ -153,4 +153,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # collectstatic 명령어로
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'  # 기본 DB 세션
+
 SEESION_COOKIE_AGE = 3600   # 세션 만료 시간 1시간
