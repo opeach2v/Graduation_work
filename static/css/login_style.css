@@ -44,7 +44,7 @@ body {
     padding-top: 30px;
     padding-bottom: 50px;
     width: 400px;
-    margin: 0 auto; /* 화면 중앙 정렬 */
+    margin: 140px auto; /* 화면 중앙 정렬 */
     border: 2px solid #f7f097;
     border-radius: 20px;
     background-color: #fffddf;
