@@ -36,7 +36,7 @@ body {
 
 /* 메인 컨테이너 */
 .main-container {
-    min-height: 100vh;
+    min-height: auto;
     padding-top: 30px;
     padding-bottom: 50px;
     width: 400px;
@@ -50,6 +50,7 @@ body {
     border-radius: 20px;
     background-color: #fffddf;
     border-bottom: 3px solid #eee;
+    flex-grow: 1;
 }
 
 /* 로그인 컨테이너 */
@@ -59,7 +60,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    flex-grow: 1;
+    justify-content: flex-start;
 }
 
 .login-box {
