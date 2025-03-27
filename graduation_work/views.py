@@ -52,24 +52,26 @@ def login_user(request):
             user_data = users_collection.find_one({"username": username, "password": password, "role": role})
             print(f"user_data: {user_data}")  # Debugging
             if user_data:
-                # MongoDB에서 찾아온 데이터를 Django의 User 모델로 변환
-                user = authenticate(username=username, password=password, role=role)  # Django User 모델로 인증
+                # 세션에 사용자 정보 수동으로 저장
+                request.session['username'] = user_data.get("username", [""])[0]
+                request.session['password'] = user_data.get("password", [""])[0]
+                request.session['role'] = user_data.get("role", [""])[0]
+
                 if user is not None:
-                    login(request, user)    # Django의 인증 시스템에서 사용되는 함수. 세션에 사용자의 정보를 저장해 해당 사용자가 인증된 상태임을 기록함
-                    role = user_data.get("role", [""])[0]
                     # role에 따라 리디렉션
                     if role == "parent":    # 부모님
                         return redirect('parents_page')
                     elif role == "teacher": # 선생님
                         return redirect('teachers_page')
                     else:
-                        return JsonResponse({"error": "Role not defined for this user"}, status=400)
+                        # 로그인 실패
+                        return render(request, 'graduation_work/main.html', {'error': '학부모와 선생님을 다시 골라주세요.'})
                 else:
                     # 로그인 실패
-                    return render(request, 'graduation_work/main.html', {'error': '아이디 또는 비밀번호가 일치하지 않습니다1.'})
+                    return render(request, 'graduation_work/main.html', {'error': '유저를 찾을 수 없습니다.'})
             else:
                 # 로그인 실패
-                return render(request, 'graduation_work/main.html', {'error': '아이디 또는 비밀번호가 일치하지 않습니다2.'})
+                return render(request, 'graduation_work/main.html', {'error': '아이디 또는 비밀번호가 일치하지 않습니다.'})
 
         except Exception as e:
             return render(request, 'graduation_work/main.html', {'error': f"로그인 중 오류가 발생했습니다: {str(e)}"})
