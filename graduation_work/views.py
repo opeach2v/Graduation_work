@@ -34,7 +34,7 @@ def add_users(request):
             return JsonResponse({"error" : str(e)}, status=500)
 
      # GET 요청이 들어오면 회원가입 페이지를 렌더링
-    return render(request, 'createId_page.html')
+    return render(request, 'graduation_work/createId_page.html')
 
 
 def show_users(request):
