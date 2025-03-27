@@ -56,6 +56,7 @@ def login_user(request):
                 # 세션에 사용자 정보 수동으로 저장
                 request.session['username'] = user_data.get("username")
                 request.session['role'] = user_data.get("role")
+                request.session['name'] = user_data.get("name", [None])[0]
                 
                 # role에 따라 리디렉션
                 if role == "parent":    # 부모님
@@ -74,17 +75,17 @@ def login_user(request):
     # return render(request, 'graduation_work/main.html')
 
 def parentsPage(request):
-    username = request.session.get('username')  # 세션에 저장했던 값 꺼냄
+    name = request.session.get('user')  # 세션에 저장했던 값 꺼냄
 
     return render(request, 'graduation_work/parents_page.html', {
-        'username' : username
+        'name' : name
     })
 
 def teachersPage(request):
-    username = request.session.get('username')
+    name = request.session.get('name')
 
     return render(request, 'graduation_work/teachers_page.html', {
-        'username' : username
+        'name' : name
     })
 
 def show_users(request):
