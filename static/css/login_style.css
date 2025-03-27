@@ -36,9 +36,8 @@ body {
 
 /* 메인 컨테이너 */
 .main-container {
-    display: flex; /* Flexbox로 설정 */
-    flex-direction: column; /* 자식 요소들을 세로로 쌓기 */
-    justify-content: center; /* 세로 중앙 정렬 */
+    display: grid;
+    place-content: center;
     align-items: center; /* 가로 중앙 정렬 */
     min-height: 100vh; /* 화면 높이에 맞게 최소 높이 설정 */
     padding-top: 30px;
@@ -53,17 +52,14 @@ body {
 
 /* 로그인 컨테이너 */
 .login-container {
-    display: flex; /* Flexbox로 설정 */
-    flex-direction: column; /* 세로로 나열 */
     width: 100%; /* 부모에 맞춰 늘어남 */
     justify-content: center; /* 세로 중앙 정렬 */
-    flex-grow: 1; /* 화면이 늘어나면 비례적으로 커짐 */
+    grid-template-columns: 1fr;
     padding: 10px;
 }
 
 .login-box {
-    display: flex;
-    flex-direction: column;
+    display: grid;
     background-color: #ffffff;
     padding: 25px;
     border-radius: 15px;
