@@ -42,7 +42,7 @@ body {
     align-items: center; /* 가로 중앙 정렬 */
     height: auto;
     padding-top: 30px;
-    padding-bottom: 50px;
+    padding-bottom: 30px;
     width: 400px;
     margin: 140px auto; /* 화면 중앙 정렬 */
     border: 2px solid #f7f097;
