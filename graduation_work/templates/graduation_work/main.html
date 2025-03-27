@@ -41,7 +41,7 @@
                 <p class="register">계정이 없으신가요? <a href="{% url 'add_users' %}">회원가입</a></p>
 
                 {% if error %}
-                    <div class="error-message" style="color: red;">
+                    <div class="error-message" style="margin-top: 10px; color: red; text-align: center;">
                         {{ error }}
                     </div>
                 {% endif %} 
