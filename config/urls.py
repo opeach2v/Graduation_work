@@ -25,7 +25,7 @@ urlpatterns = [
     path('', include('graduation_work.urls')),  # graduation_work 앱으로 위임
     path("parents_page/", parentsPage, name="parents_page"),
     path("teachers_page/", teachersPage, name="teachers_page"),
-    path("createId_page/", include('graduation_work.urls')),
+    path("signup/", include('graduation_work.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
