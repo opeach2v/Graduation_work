@@ -4,6 +4,10 @@ from django.http import JsonResponse
 from datetime import datetime
 from .models import users_collection
 
+# 로그인 페이지 (메인)
+def main(request):
+    return render(request,'graduation_work/main.html')
+
 # 회원가입
 @csrf_exempt
 def add_users(request):
@@ -32,7 +36,7 @@ def add_users(request):
      # GET 요청이 들어오면 회원가입 페이지를 렌더링
     return render(request, 'graduation_work/createId_page.html')
 
-# 로그인
+# 로그인 처리
 @csrf_exempt
 def login_user(request):
     if request.method == 'POST':
@@ -58,8 +62,6 @@ def login_user(request):
 
         except Exception as e:
             return JsonResponse({"error" : str(e)}, status=500)
-
-    return render(request, 'graduation_work/main.html')
 
 def parentsPage(request):
     return render(request, 'graduation_work/parents_page.html')
