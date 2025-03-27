@@ -14,12 +14,12 @@ def add_users(request):
         "role": "parent",
         "name": "장혜진",
         "createdAt": datetime.now()
-    }
+        }
 
-    users_collection.insert_one(data)
-    return JsonResponse({"message" : "Data saved successfully"})
+        users_collection.insert_one(data)
+        return JsonResponse({"message" : "Data saved successfully"})
 
-    except catch Exception as e:
+    except Exception as e:
         return JsonResponse({"error" : str(e)}, status=500)
 
 def show_users(request):
