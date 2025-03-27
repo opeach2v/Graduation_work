@@ -50,9 +50,7 @@ def login_user(request):
 
             # 데이터 조회 (username, password가 일치하는 데이터가 있는지 확인)
             user_data = users_collection.find_one({"username": username, "password": password, "role": role})
-
-            print(f"user_data" : {user_data})  # Debugging
-
+            print(f"user_data: {user_data}")  # Debugging
             if user_data:
 
                 # MongoDB에서 찾아온 데이터를 Django의 User 모델로 변환
