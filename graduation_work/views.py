@@ -8,26 +8,33 @@ from .models import users_collection
 def main(request):
     return render(request,'graduation_work/main.html')
 
-# 회원가입 페이지
-def show_createId_page(request):
-    return render(request,'graduation_work/createId_page.html')
-
 # 회원가입 처리
 @csrf_exempt
 def add_users(request):
     if request.method == 'POST':
         try:
+            # POST 데이터 받기
+            username = request.POST.get('username'),
+            password = request.POST.get('password'),
+            role = request.POST.get('role'),
+            name = request.POST.get('name'),
+
+            # 데이터 생성
             data = {
-            "username": request.POST.get('username'),
-            "password": request.POST.get('password'),
-            "role": request.POST.get('role'),
-            "name": request.POST.get('name'),
-            "createdAt": datetime.now()
+                "username": username,
+                "password": password,
+                "role": role,
+                "name": name,
+                "createdAt": datetime.now()
             }
+
+            # mongoDB에 저장
             users_collection.insert_one(data)
         except Exception as e:
             return JsonResponse({"error" : str(e)}, status=500)
-    return JsonResponse({"error": "POST 요청만 허용됩니다"}, status=405)
+
+     # GET 요청이 들어오면 회원가입 페이지를 렌더링
+    return render(request, 'createId_page.html')
 
 
 def show_users(request):

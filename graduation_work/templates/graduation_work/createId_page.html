@@ -26,21 +26,23 @@
             </div>
             <div class="create-box">
                 <h2 style="text-align: center; margin-bottom: 10px;">회원가입</h2>
-                {% csrf_token %}
-                <div class="select">
-                    <input type="radio" name="role" id="teacher" value="teacher" checked><label for="teacher" class="select-label">선생님</label>
-                    <input type="radio" name="role" id="parent" value="parent"><label for="parent" class="select-label">학부모</label>
-                </div>
-                <label for="login">Username:</label>
-                <input type="text" id="login" name="login" placeholder="Enter your username *" required>
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" placeholder="Enter your password *" required>
-                <label for="checkPassword">Cheak Password:</label>
-                <input type="password" id="checkPassword" name="checkPassword" placeholder="Check your password *" required>
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" placeholder="Enter your name *" required>
-                <br>
-                <button type="submit" class="createId-btn" onclick="location.href='../'">저장</button>
+                <form method="POST" action="{% url 'add_users' %}">
+                    {% csrf_token %}
+                    <div class="select">
+                        <input type="radio" name="role" id="teacher" value="teacher" checked><label for="teacher" class="select-label">선생님</label>
+                        <input type="radio" name="role" id="parent" value="parent"><label for="parent" class="select-label">학부모</label>
+                    </div>
+                    <label for="login">Username:</label>
+                    <input type="text" id="login" name="login" placeholder="Enter your username *" required>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password *" required>
+                    <label for="checkPassword">Cheak Password:</label>
+                    <input type="password" id="checkPassword" name="checkPassword" placeholder="Check your password *" required>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name *" required>
+                    <br>
+                    <button type="submit" class="createId-btn">저장</button>
+                </form>
             </div>
         </section>
     </main>
