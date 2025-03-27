@@ -32,6 +32,7 @@ def add_users(request):
 
             # mongoDB에 저장
             users_collection.insert_one(data)
+            return render(request, 'graduation_work/createId_page.html')
         except Exception as e:
             return JsonResponse({"signup error" : str(e)}, status=500)
 
