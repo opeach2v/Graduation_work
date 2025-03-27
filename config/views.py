@@ -5,10 +5,7 @@ def main(request):
     return render(request,'main.html', {
         'MEDIA_URL': settings.MEDIA_URL,
     })
-
-def dbtest(request):
-    return render(request, 'db_test.html')
-
+    
 def parentsPage(request):
     return render(request, 'parents_page.html', {
         'MEDIA_URL': settings.MEDIA_URL,

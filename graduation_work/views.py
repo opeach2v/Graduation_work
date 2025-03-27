@@ -8,7 +8,7 @@ from .models import users_collection
 def main(request):
     return render(request,'graduation_work/main.html')
 
-# 회원가입 처리
+# 회원가입
 @csrf_exempt
 def add_users(request):
     if request.method == 'POST':
@@ -36,6 +36,40 @@ def add_users(request):
      # GET 요청이 들어오면 회원가입 페이지를 렌더링
     return render(request, 'graduation_work/createId_page.html')
 
+# 로그인 처리
+@csrf_exempt
+def login_user(request):
+    if request.method == 'POST':
+        try:
+            # POST 데이터 받기
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+
+            # 데이터 조회 (username, password가 일치하는 데이터가 있는지 확인)
+            data = users_collection.find_one({"username": username, "password": password})
+
+            if data is not None:
+                # 로그인 성공
+                login(request, data)    # Django의 인증 시스템에서 사용되는 함수. 세션에 사용자의 정보를 저장해 해당 사용자가 인증된 상태임을 기록함
+                # role에 따라 리디렉션
+                if data.get("role") == "parent":    # 부모님
+                    return redirect('parents_page')
+                elif data.get("role") == "teacher": # 선생님
+                    return redirect('teachers_page')
+            else:
+                # 로그인 실패
+                return render(request, 'graduation_work/main.html', {'error': '아이디 또는 비밀번호가 일치하지 않습니다.'})
+
+        except Exception as e:
+            return JsonResponse({"error" : str(e)}, status=500)
+
+    return render(request, 'graduation_work/main.html')
+
+def parentsPage(request):
+    return render(request, 'parents_page.html')
+
+def teachersPage(request):
+    return render(request, 'teachers_page.html')
 
 def show_users(request):
     users = []
