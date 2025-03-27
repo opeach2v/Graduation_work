@@ -6,15 +6,11 @@ from .models import users_collection
 
 # 로그인 페이지 (메인)
 def main(request):
-    return render(request,'graduation_work/main.html', {
-        'MEDIA_URL': settings.MEDIA_URL,
-    })
+    return render(request,'graduation_work/main.html')
 
 # 회원가입 페이지
 def show_createId_page(request):
-    return render(request,'graduation_work/createId_page.html', {
-        'MEDIA_URL': settings.MEDIA_URL,
-    })
+    return render(request,'graduation_work/createId_page.html')
 
 # 회원가입 처리
 @csrf_exempt
