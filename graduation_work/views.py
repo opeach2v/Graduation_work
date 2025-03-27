@@ -33,7 +33,7 @@ def add_users(request):
             # mongoDB에 저장
             users_collection.insert_one(data)
         except Exception as e:
-            return JsonResponse({"error" : str(e)}, status=500)
+            return JsonResponse({"signup error" : str(e)}, status=500)
 
      # GET 요청이 들어오면 회원가입 페이지를 렌더링
     return render(request, 'graduation_work/createId_page.html')
@@ -63,7 +63,7 @@ def login_user(request):
                 return render(request, 'graduation_work/main.html', {'error': '아이디 또는 비밀번호가 일치하지 않습니다.'})
 
         except Exception as e:
-            return JsonResponse({"error" : str(e)}, status=500)
+            return JsonResponse({"login error" : str(e)}, status=500)
 
 def parentsPage(request):
     return render(request, 'graduation_work/parents_page.html')
