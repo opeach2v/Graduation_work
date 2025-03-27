@@ -46,13 +46,14 @@ def login_user(request):
             # POST 데이터 받기
             username = request.POST.get('username')
             password = request.POST.get('password')
+            user = authenticate(request, username=username, password=password)  # 사용자가 입력한 정보를 통해 인증
 
             # 데이터 조회 (username, password가 일치하는 데이터가 있는지 확인)
             data = users_collection.find_one({"username": username, "password": password})
 
             if data is not None:
                 # 로그인 성공
-                login(request, User)    # Django의 인증 시스템에서 사용되는 함수. 세션에 사용자의 정보를 저장해 해당 사용자가 인증된 상태임을 기록함
+                login(request, user)    # Django의 인증 시스템에서 사용되는 함수. 세션에 사용자의 정보를 저장해 해당 사용자가 인증된 상태임을 기록함
                 # role에 따라 리디렉션
                 if user.role == "parent":    # 부모님
                     return redirect('parents_page')
