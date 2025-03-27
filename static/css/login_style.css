@@ -54,7 +54,7 @@ body {
 .login-container {
     margin: auto;
     width: 90%;
-    height: 460px;
+    height: auto;
 }
 
 .login-box {

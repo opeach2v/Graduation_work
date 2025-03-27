@@ -74,10 +74,18 @@ def login_user(request):
     # return render(request, 'graduation_work/main.html')
 
 def parentsPage(request):
-    return render(request, 'graduation_work/parents_page.html')
+    username = request.session.get('username')  # 세션에 저장했던 값 꺼냄
+
+    return render(request, 'graduation_work/parents_page.html', {
+        'username' : username
+    })
 
 def teachersPage(request):
-    return render(request, 'graduation_work/teachers_page.html')
+    username = request.session.get('username')
+
+    return render(request, 'graduation_work/teachers_page.html', {
+        'username' : username
+    })
 
 def show_users(request):
     users = []
