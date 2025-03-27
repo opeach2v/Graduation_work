@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from datetime import datetime
 from django.contrib.auth import login, authenticate
-form django.contrib.auth.models import User
+from django.contrib.auth.models import User
 from .models import users_collection
 
 # 로그인 페이지 (메인)
