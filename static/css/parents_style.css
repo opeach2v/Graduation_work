@@ -111,7 +111,7 @@ table {
 thead {
     display: block;
     width: 100%;
-    font-size: 23px;;
+    font-size: 20px;
     padding-right: 16px;
 }
 
@@ -120,9 +120,6 @@ thead tr {
     width: 100%;
     table-layout: fixed;
     border-bottom: 1px solid #ccc;
-}
-thead th {
-    font-size: 10px;
 }
 
 tbody {
