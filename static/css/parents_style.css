@@ -180,13 +180,13 @@ td:nth-child(4) {
 
 /* 오늘의 하루 버튼 */
 .today-btn {
-    width: 12px;
+    background-color: transparent;
     cursor: pointer;
     border: none;
 }
 
 .today-btn img {
-    width: 12px;
+    width: 15px;
 }
 
 .other-box {
