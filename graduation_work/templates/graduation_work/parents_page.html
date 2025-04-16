@@ -9,11 +9,11 @@
         <link rel="apple-touch-icon" href="{% static 'media/webLogo.png' %}">
         <!-- live server에서만 작동 -->
         <link rel="icon" href="../media/webLogo.png">
-        <link rel="apple-touch-icon" href="../media/webLogo.png">
+        <link rel="apple-touch-icon" href="../../media/webLogo.png">
         <!-- Django에서만 작동 -->
         <link rel="stylesheet" href="{% static 'css/parents_style.css' %}">
         <!-- live server에서만 작동 -->
-        <link rel="stylesheet" href="../static/css/parents_style.css">
+        <link rel="stylesheet" href="J:\Graduation_work\Graduation_work\static\css\parents_style.css">
         <title>어린이가 위험해요!</title>
     </head>
     <body>
@@ -23,7 +23,7 @@
         <!-- Django에서만 작동 -->
         <script src="{% static 'js/parents_page.js' %}"></script>
         <!-- live server에서만 작동 -->
-        <script src="../static/js/parents_page.js"></script>
+        <script src="J:\Graduation_work\Graduation_work\static\js\parents_page.js"></script>
         <main class="main-container">
             <header class="site-header">
                 <nav class="header-nav">
@@ -37,6 +37,20 @@
                 </div>
                 <h1 style="font-size: 25px; padding-left: 15px; margin: 5px;">{{ name }} 학부모님, 반갑습니다!</h1>
             </header>
+            <div class="popup_layer" id="popup_layer" style="display: none;">
+                <div class="popup_box">
+                    <div style="height: 10px; width: 375px; float: top;">
+                        <a href="javascript:closePop();"><img src="{{ MEDIA_URL }}ic_close.png" class="m_header-banner-close" width="30px" height="30px"></a>
+                    </div>
+                    <div class="popup_cont">
+                        <h2> 알림장 </h2>
+                        <p>오늘은 날씨가 되게 좋아요^^<br>
+                        다른 아이들도 엄청 즐거워하고, 특히 우람이가 열심히 뛰어놀더라구요!<br>
+                        보람이는 오늘 좀 피곤한지 앉아만 있었습니다ㅠㅠ<br><br>
+                        준비물: 양말, 모자, 장갑</p>
+                    </div>
+                </div>
+            </div>
             <section class="homework-container" id="homeworkContainer">
                 <div class="homework-box">
                     <div class="homework-list-box">
@@ -45,19 +59,19 @@
                                 <tr>
                                     <th>이름</th>
                                     <th>나이</th>
-                                    <th><button class="list-comment-btn" onclick="javascript:openFormAll()">공통 내용</button></th>
+                                    <th> </th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>고우람</td>
                                     <td>5세</td>
-                                    <td><button class="list-comment-btn" onclick="javascript:openForm()">알림장</button></td>
+                                    <td><button class="list-comment-btn" onclick="javascript:openPop()">알림장</button></td>
                                 </tr>
                                 <tr>
                                     <td>고보람</td>
                                     <td>3세</td>
-                                    <td><button class="list-comment-btn" onclick="javascript:openForm()">알림장</button></td>
+                                    <td><button class="list-comment-btn" onclick="javascript:openPop()">알림장</button></td>
                                 </tr>
                             </tbody>
                         </table>
