@@ -276,6 +276,9 @@ p.headline {
     width: calc(280px * 4);
     transition: 0.5s;
 }
+.slide_item {
+    float: left;
+}
 .slide_item img {
     max-width: 280px;
 }
