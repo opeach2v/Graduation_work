@@ -238,7 +238,7 @@ p.headline {
     max-width: 90vw;
     max-height: 90vh;
     overflow-y: auto;
-    padding:20px;
+    padding:25px;
     line-height:1.4rem;
     font-size:15.5px; 
 }
@@ -263,6 +263,11 @@ p.headline {
 
 /* 슬라이더 */
 .wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.wrap1 {
     display: flex;
     justify-content: center;
     align-items: center;

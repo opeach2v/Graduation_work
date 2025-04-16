@@ -17,7 +17,7 @@ function closeTodayPop() {
 }
 
 // 사진/영상 슬라이드
-document.addEventListener('DOMContentLoaded', function () {
+document.querySelectorAll('.wrap').forEach((wrap) => {
     const prev = document.querySelector('.prev'); // 이전 이미지
     const next = document.querySelector('.next'); // 다음 이미지
     const slideBox = document.querySelector('.slide_box');
