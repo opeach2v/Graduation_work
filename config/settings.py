@@ -16,7 +16,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATE_DIR = BASE_DIR / 'templates'
 
-MEDIA_URL = '/media/'
+MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 # Quick-start development settings - unsuitable for production
@@ -92,7 +92,7 @@ DATABASES = {
                     'propogate': False,
                 }
             },
-         },
+        },
         'NAME': 'usersDB',
         'CLIENT': {
             'host': 'localhost',
