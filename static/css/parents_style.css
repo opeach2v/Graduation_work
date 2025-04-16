@@ -267,11 +267,6 @@ p.headline {
     justify-content: center;
     align-items: center;
 }
-.wrap1 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 .box {
     overflow: hidden;
     width: 280px;
@@ -293,6 +288,38 @@ p.headline {
     cursor: pointer;
 }
 .next img {
+    max-width: 20px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+/* 슬라이더1 */
+.wrap1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.box1 {
+    overflow: hidden;
+    width: 280px;
+    max-width: 280px;
+}
+.slide_box1 {
+    width: calc(280px * 4);
+    transition: 0.5s;
+}
+.slide_item1 {
+    float: left;
+}
+.slide_item1 img {
+    max-width: 280px;
+}
+.prev1 img {
+    max-width: 20px;
+    padding: 5px;
+    cursor: pointer;
+}
+.next1 img {
     max-width: 20px;
     padding: 5px;
     cursor: pointer;
