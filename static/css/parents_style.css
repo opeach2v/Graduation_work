@@ -31,7 +31,7 @@ body {
     list-style: none;
     display: flex;
     gap: 20px;
-    float: right;
+    float: center;
     margin-top: 5px;
   }
   
