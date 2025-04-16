@@ -32,6 +32,7 @@ body {
     display: flex;
     gap: 20px;
     margin-top: 5px;
+    align-items: center;
   }
   
 .header-nav a {
@@ -39,7 +40,6 @@ body {
     color: #333;
     font-size: 16px;
     font-weight: bold;
-    align-items: center;
 }
   
 .header-nav a:hover {
