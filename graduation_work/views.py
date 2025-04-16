@@ -84,7 +84,7 @@ def login_user(request):
 
         except Exception as e:
             return render(request, 'graduation_work/main.html', {'error': f"로그인 중 오류가 발생했습니다: {str(e)}"})
-    # return render(request, 'graduation_work/main.html')
+    return render(request, 'graduation_work/main.html')
 
 @never_cache
 def parentsPage(request):
