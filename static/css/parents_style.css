@@ -269,27 +269,27 @@ p.headline {
 }
 .slider__img { /*이미지가 보이는 영역*/
     position: relative;
-    width: 800px;
-    height: 450px;
+    width: 340px;
+    height: 400px;
     overflow: hidden;
 }
 .slider__inner { /*전체 이미지를 감싸고 있는 부모 : 움직이는 영역*/
     display: flex;
     flex-wrap: wrap;
-    width: 4000px;
-    height: 450px;
+    width: 340px;
+    height: 400px;
 }
 .slider { /*개별적인 이미지*/
     position: relative;
-    width: 800px;
-    height: 450px;
+    width: 340px;
+    height: 400px;
 }
 .slider__btn a {
     position: absolute;
     top: 50%;
     transform:  translateY(-50%);
-    width: 50px;
-    height: 50px;
+    width: 10px;
+    height: 10px;
     background-color: transparent;
     line-height: 50px;
     text-align: center;
