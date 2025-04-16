@@ -261,80 +261,34 @@ p.headline {
 /*오버레이 뒷배경*/
 .popup_overlay{position:fixed;top:0px;right:0;left:0;bottom:0;z-index:1001;;background:rgba(0,0,0,0.5);}
 
-
-.slider__wrap {
-    width: 100%;
-    max-width: 300px;
+/* 슬라이더 */
+.wrap {
     display: flex;
     justify-content: center;
-    margin: 20px 0;
+    align-items: center;
 }
-
-.slider__img {
-    position: relative;
-    width: 280px;
-    height: 186px; /* 6:4 비율 */
+.box {
     overflow: hidden;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    background: #000;
-}
-
-.slider__inner {
-    display: flex;
-    transition: transform 0.5s ease;
     width: 280px;
-    height: 186px;
-}
-
-.slider {
-    width: 280px;
-    height: 186px;
-    flex-shrink: 0;
-}
-
-.slider img {
-    width: 100%;
-    height: 100%;
     max-width: 280px;
-    object-fit: cover;
 }
-
-.slider__btn a {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 20px;
-    height: 20px;
-    z-index: 10;
-    user-select: none;
+.slide_box {
+    width: 2000px;
+    transition: 0.5s;
 }
-
-.slider__btn a.prev {
-    left: 8px;
+.slide_item {
+    float: left;
 }
-.slider__btn a.next {
-    right: 8px;
+.slide_item img {
+    max-width: 280px;
 }
-
-.slider__dot {
-    position: absolute;
-    bottom: 8px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.slider__dot .dot {
-    width: 8px;
-    height: 8px;
-    background: rgba(255,255,255,0.4);
-    display: inline-block;
-    border-radius: 50%;
-    margin: 0 3px;
-    text-indent: -9999px;
+.prev {
+    max-width: 20px;
+    padding: 5px;
     cursor: pointer;
 }
-
-.slider__dot .dot.active {
-    background: white;
+.next {
+    max-width: 20px;
+    padding: 5px;
+    cursor: pointer;
 }
