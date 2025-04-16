@@ -29,11 +29,9 @@ body {
 
 .header-nav ul {
     list-style: none;
-    display: flex;
-    gap: 20px;
     margin-top: 5px;
     align-items: center;
-  }
+}
   
 .header-nav a {
     text-decoration: none;
