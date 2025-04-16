@@ -273,7 +273,7 @@ p.headline {
     max-width: 280px;
 }
 .slide_box {
-    width: 2000px;
+    width: calc(280px * 4);
     transition: 0.5s;
 }
 .slide_item {

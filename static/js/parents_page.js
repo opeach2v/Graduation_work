@@ -17,26 +17,30 @@ function closeTodayPop() {
 }
 
 // 사진/영상 슬라이드
-const prev = document.querySelector('.prev');
-const next = document.querySelector('.next');
-const slideBox = document.querySelector('.slide_box')
-const slide = document.querySelectorAll('.slide_item img')
-const slideLangth = slide.length
-let currentIndex = 0;
+document.addEventListener('DOMContentLoaded', function () {
+    const prev = document.querySelector('.prev'); // 이전 이미지
+    const next = document.querySelector('.next'); // 다음 이미지
+    const slideBox = document.querySelector('.slide_box');
+    const slideItems = document.querySelectorAll('.slide_item');
+    const slideLength = slideItems.length;
+    let currentIndex = 0;
 
-const moveSlide = function(num){
-    slideBox.style.transform = `translateX(${-num * 400}px)`;
-    currentIndex = num;
-}
+    const moveSlide = function (num) {
+        slideBox.style.transition = 'transform 0.4s ease'; // 부드럽게
+        slideBox.style.transform = `translateX(${-num * 280}px)`;
+        currentIndex = num;
+    };
 
-prev.addEventListener('click', ()=>{
-    if(currentIndex !== 0){
-        moveSlide(currentIndex -1)
-    }
-})
+    // 이미지에 클릭 이벤트 연결
+    prev.addEventListener('click', () => {
+        if (currentIndex > 0) {
+            moveSlide(currentIndex - 1);
+        }
+    });
 
-next.addEventListener('click', ()=>{
-    if(currentIndex !== slideLangth -1){
-        moveSlide(currentIndex +1)
-    }
-})
+    next.addEventListener('click', () => {
+        if (currentIndex < slideLength - 1) {
+            moveSlide(currentIndex + 1);
+        }
+    });
+});
