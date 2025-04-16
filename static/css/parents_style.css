@@ -185,6 +185,10 @@ td:nth-child(4) {
     border: none;
 }
 
+.today-btn img {
+    width: 12px;
+}
+
 .other-box {
     background-color: transparent;
     padding: 25px;
