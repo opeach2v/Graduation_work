@@ -149,7 +149,7 @@ td:nth-child(1) {
 
 th:nth-child(2),
 td:nth-child(2) {
-    width: 30%;
+    width: 20%;
 }
 
 th:nth-child(3),
@@ -159,7 +159,7 @@ td:nth-child(3) {
 
 th:nth-child(4),
 td:nth-child(4) {
-    width: 10%;
+    width: 20%;
 }
 
 /* 알림장 버튼 */
@@ -179,9 +179,8 @@ td:nth-child(4) {
 }
 
 /* 오늘의 하루 버튼 */
-.today-btn img{
-    width: 30px;
-    height: 30px;
+.today-btn {
+    width: 12px;
     cursor: pointer;
     border: none;
 }
