@@ -226,6 +226,7 @@ p.headline {
     overflow-y: scroll;
     overflow-x : hidden;
     transform:translate(-50%, -50%);
+    border-radius: 17px;
     z-index:1002;
     box-sizing:border-box;
     background:#fff;
@@ -238,7 +239,7 @@ p.headline {
 }
 .popup_box::-webkit-scrollbar-thumb {
     background-color: #f5cf26;
-    border-radius: 14px;
+    border-radius: 20px;
     background-clip: padding-box;
     border: 1.5px solid transparent;
 }
