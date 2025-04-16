@@ -2,6 +2,9 @@
 {% load static %}
 <html lang="ko">
     <head>
+        <!-- 동영상 플레이어 css & js -->
+        <link href="https://vjs.zencdn.net/8.22.0/video-js.css" rel="stylesheet" />
+        <script src="https://vjs.zencdn.net/8.22.0/video.min.js"></script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Django에서만 작동 -->
@@ -40,6 +43,32 @@
             <div class="popup_layer" id="popup_layer" style="display: none;">
                 <div class="popup_box">
                     <div style="height: 10px; width: 375px; float: top;">
+                        <a href="javascript:closeTodayPop();"><img src="{{ MEDIA_URL }}ic_close.png" class="m_header-banner-close" width="30px" height="30px"></a>
+                    </div>
+                    <div class="popup_cont">
+                        <h2 style="text-align: center;"> 오늘의 하루 </h2>
+                        <h3 style="text-align: center;">고우람 어린이</h3>
+                        <video
+                            id="my-video"
+                            class="video-js"
+                            controls preload="auto"
+                            width="640"
+                            height="264"
+                            poster="MY_VIDEO_POSTER.jpg"
+                            data-setup="{}">
+                            <source src="{% static 'media/danger.mp4' %}" type="video/mp4" />
+                            <p class="vjs-no-js">
+                                To view this video please enable JavaScript, and consider upgrading to a
+                                web browser that
+                                <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+                            </p>
+                        </video>
+                    </div>
+                </div>
+            </div>
+            <div class="popup_layer" id="popup_layer" style="display: none;">
+                <div class="popup_box">
+                    <div style="height: 10px; width: 375px; float: top;">
                         <a href="javascript:closePop();"><img src="{{ MEDIA_URL }}ic_close.png" class="m_header-banner-close" width="30px" height="30px"></a>
                     </div>
                     <div class="popup_cont">
@@ -47,7 +76,26 @@
                         <p>오늘은 날씨가 되게 좋아요^^<br>
                         다른 아이들도 엄청 즐거워하고, 특히 우람이가 열심히 뛰어놀더라구요!<br>
                         보람이는 오늘 좀 피곤한지 앉아만 있었습니다ㅠㅠ<br><br>
+                        그리구 너무 죄송하게도.. 오늘 위험한 일이 있었는데 앞으로 더욱 신경 쓰도록 하겠습니다...<br><br>
                         준비물: 양말, 모자, 장갑</p>
+                        <video
+                            id="my-video"
+                            class="video-js"
+                            controls preload="auto"
+                            width="640"
+                            height="264"
+                            poster="MY_VIDEO_POSTER.jpg"
+                            data-setup="{}">
+                            <source src="{% static 'media/danger.mp4' %}" type="video/mp4" />
+                            <p class="vjs-no-js">
+                                To view this video please enable JavaScript, and consider upgrading to a
+                                web browser that
+                                <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+                            </p>
+                        </video>
+                    </div>
+                    <div class="popup_cont">
+                        <h2>* 오늘의 위험 행동: 2건</h2>
                     </div>
                 </div>
             </div>
@@ -59,7 +107,7 @@
                                 <tr>
                                     <th>이름</th>
                                     <th>나이</th>
-                                    <th> </th>
+                                    <th><button class="list-comment-btn" onclick="javascript:openTodayPop()">오늘의 하루</button></th>
                                 </tr>
                             </thead>
                             <tbody>
