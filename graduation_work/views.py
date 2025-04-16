@@ -2,9 +2,10 @@ from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from datetime import datetime
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
 from .models import users_collection
+from django.views.decorators.cache import never_cache
 
 import bcrypt;
 
@@ -85,14 +86,22 @@ def login_user(request):
             return render(request, 'graduation_work/main.html', {'error': f"로그인 중 오류가 발생했습니다: {str(e)}"})
     # return render(request, 'graduation_work/main.html')
 
+@never_cache
 def parentsPage(request):
+    # 로그인 안 햇는데도 URL로 접근하려고 하면 막음
+    if not request.session.get('username'):
+        return redirect('login_user')
     name = request.session.get('name')  # 세션에 저장했던 값 꺼냄
 
     return render(request, 'graduation_work/parents_page.html', {
         'name' : name
     })
 
+@never_cache
 def teachersPage(request):
+    # 로그인 안 햇는데도 URL로 접근하려고 하면 막음
+    if not request.session.get('username'):
+        return redirect('login_user')
     name = request.session.get('name')
 
     return render(request, 'graduation_work/teachers_page.html', {
@@ -110,3 +119,8 @@ def show_users(request):
         users.append({"username": username, "password": password, "role": role, "name": name, "createdAt": createdAt})
     
     return JsonResponse({'users': users}, safe=False, json_dumps_params={'ensure_ascii': False}, content_type="application/json; charset=UTF-8")
+
+# 로그아웃
+def logout(request) :
+    request.session.flush();    # 세션 전체 삭제 (뒤로가기 되면 안 됨)
+    return redirect('login_user')
