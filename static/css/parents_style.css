@@ -245,10 +245,11 @@ p.headline {
 }
 .popup_box::-webkit-scrollbar-track {
     background-color: #fffdf7;
+    border-radius: 10px;
     width: 10px;
 }
 .popup_box::-webkit-scrollbar-thumb:hover {
-	background-color:#5c5c5c;
+	background-color:#707070;
 }
 /*컨텐츠 영역*/
 .popup_box .popup_cont {
