@@ -30,7 +30,7 @@ body {
 .header-nav ul {
     list-style: none;
     margin-top: 5px;
-    align-items: center;
+    text-align: center;
 }
   
 .header-nav a {
@@ -47,7 +47,6 @@ body {
 /* 로고 영역 */
 .logo-area {
     margin: 15px 0;
-    margin-left: 50px;
 }
 
 .logo-img {
