@@ -234,23 +234,6 @@ p.headline {
     -webkit-box-shadow: 2px 5px 10px 0px rgba(0,0,0,0.35);
     -moz-box-shadow: 2px 5px 10px 0px rgba(0,0,0,0.35);
 }
-.popup_box::-webkit-scrollbar {
-    width: 9px;
-}
-.popup_box::-webkit-scrollbar-thumb {
-    background-color: #f5cf26;
-    border-radius: 20px;
-    background-clip: padding-box;
-    border: 1.5px solid transparent;
-}
-.popup_box::-webkit-scrollbar-track {
-    background-color: #fffcf0;
-    border-radius: 17px;
-    width: 10px;
-}
-.popup_box::-webkit-scrollbar-thumb:hover {
-	background-color:#f8db57;
-}
 /*컨텐츠 영역*/
 .popup_box .popup_cont {
     max-width: 90vw;
