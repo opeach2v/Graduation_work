@@ -215,7 +215,16 @@ p.headline {
 }
 
 /* 팝업 - 퍼옴 */
-.popup_layer {position:fixed;top:0;left:0;z-index: 10000; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.4); }
+.popup_layer {
+    position: fixed;
+    top: 0;
+    left: 0; 
+    z-index: 10000; 
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0, 0, 0, 0.4); 
+    padding: 10px;
+}
 /*팝업 박스*/
 .popup_box{
     position: relative;
