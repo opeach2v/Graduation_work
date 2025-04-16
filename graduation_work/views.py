@@ -24,7 +24,7 @@ def add_users(request):
             role = request.POST.get('role')
             name = request.POST.get('name')
 
-            hashed_pw = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt());
+            hashed_pw = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8');
 
             # 데이터 생성
             data = {
@@ -58,11 +58,11 @@ def login_user(request):
             user_data = users_collection.find_one({"username": username, "role": role})
             print(f"user_data: {user_data}")  # Debugging
             if user_data:
-                hashed_pw = user_data.get('password');
+                hashed_pw = user_data.get('password');  # 문자열로 가져옴
 
                 # 세션에 사용자 정보 수동으로 저장
                 # 비밀번호 비교 (바이트로 변환)
-                if bcrypt.checkpw(input_password.encode('utf-8'), hashed_pw) :
+                if bcrypt.checkpw(input_password.encode('utf-8'), hashed_pw.encode('utf-8')) :
                     request.session['username'] = user_data.get("username")
                     request.session['role'] = user_data.get("role")
                     request.session['name'] = user_data.get("name", [None])[0]
