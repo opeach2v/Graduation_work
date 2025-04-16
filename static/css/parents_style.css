@@ -282,12 +282,12 @@ p.headline {
 .slide_item img {
     max-width: 280px;
 }
-.prev {
+.prev img {
     max-width: 20px;
     padding: 5px;
     cursor: pointer;
 }
-.next {
+.next img {
     max-width: 20px;
     padding: 5px;
     cursor: pointer;
