@@ -15,6 +15,7 @@ def main(request):
 
 # 회원가입
 @csrf_exempt
+@never_cache
 def add_users(request):
     if request.method == 'POST':
         try:
@@ -46,6 +47,7 @@ def add_users(request):
 
 # 로그인 처리
 @csrf_exempt
+@never_cache
 def login_user(request):
     if request.method == 'POST':
         try:
