@@ -25,6 +25,9 @@ def add_users(request):
             role = request.POST.get('role')
             name = request.POST.get('name')
 
+            # TODO  username과 password가 영어일 때만 넘어가고, 무조건 4개 항목이 다 입력되어야 가입되도록 해야 함.
+            # TODO  가입 되면 그냥 로그인 페이지로 가는 게 아니라 회원가입 됐다고 뜨도록 해야 함
+
             hashed_pw = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8');
 
             # 데이터 생성
