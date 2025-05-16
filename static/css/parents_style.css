@@ -205,6 +205,16 @@ p.headline {
     text-align: center;
 }
 
+details > summary {
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;  
+}
+
+details > summary::-webkit-details-marker {
+    transition: transform 0.25s;
+}
+
 .map-img {
     width: 200px;
     height: 200px;
