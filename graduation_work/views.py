@@ -1,10 +1,11 @@
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render, redirect
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from datetime import datetime
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
 from .models import users_collection
+from . import models
 from django.views.decorators.cache import never_cache
 
 import bcrypt;
@@ -109,6 +110,7 @@ def teachersPage(request):
         return redirect('login_user')
     name = request.session.get('name')
 
+
     return render(request, 'graduation_work/teachers_page.html', {
         'name' : name
     })
@@ -128,4 +130,24 @@ def show_users(request):
 # 로그아웃
 def logout(request) :
     request.session.flush();    # 세션 전체 삭제 (뒤로가기 되면 안 됨)
+    logout(request)
     return redirect('login_user')
+
+# 파일 업로드
+def uplooadFile(request):
+    if request.method == "POST":
+        fileTitle = request.POST['fileTitle']
+        uploadedFile = request.FILES["uploadedFile"]
+
+        # DB에 저장
+        fileUploads = models.FileUploads(
+            title = fileTitle,
+            uploadedFile = uploadedFile
+        )
+        fileUploads.save()
+
+    fileUpload = models.FileUploads.objects.all()
+
+    return render(request, "teachers_page.html", context = {
+        "files": fileUpload
+    })
