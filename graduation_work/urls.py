@@ -8,5 +8,6 @@ urlpatterns = [
     path('signup/', views.add_users, name='add_users'),    # 회원가입 페이지 및 회원가입 처리
     path('parents/', views.parentsPage, name='parents_page'),    # 부모님 페이지
     path('teachers/', views.teachersPage, name='teachers_page'),    # 선생님 페이지
+    path('logout/', views.logout_view, name='logout'),
     path('show/', views.show_users),
 ]

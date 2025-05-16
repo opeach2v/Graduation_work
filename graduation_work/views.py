@@ -2,7 +2,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render, redirect
 from django.http import JsonResponse, HttpResponse
 from datetime import datetime
-from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth import logout as django_logout
 from django.contrib.auth.models import User
 from .models import users_collection
 from . import models
@@ -128,9 +128,9 @@ def show_users(request):
     return JsonResponse({'users': users}, safe=False, json_dumps_params={'ensure_ascii': False}, content_type="application/json; charset=UTF-8")
 
 # 로그아웃
-def logout(request) :
+def logout_view(request) :
     request.session.flush();    # 세션 전체 삭제 (뒤로가기 되면 안 됨)
-    logout(request)
+    django_logout(request)
     return redirect('login_user')
 
 # 파일 업로드
