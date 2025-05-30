@@ -6,15 +6,25 @@
     </head>
     <body>
         <div>
-            <label for="child_id">아동 ID: </label>
-            <input type="text" id="child_id"><br>
-            <label for="event_type">감지된 행동: </label>
-            <input type="radio" id="event_type"><br>
-            <label for="confidence">인식 신뢰도: </label>
-            <input type="range" min="0" max="100" id="confidence"><br>
-            <label for="timestamp">감지 시간: </label>
-            <input type="date" id="timestamp"><br><br>
-            <input type="submit" value="저장">
+            <form method="POST" action="{% url 'input_results' %}">
+                {% csrf_token %}
+                <label for="child_id">아동 ID: </label>
+                <input type="text" id="child_id"><br>
+                <label for="event_type">감지된 행동: </label>
+                <input type="radio" id="event_type" name="action" value="울음">
+                <input type="radio" id="event_type" name="action" value="달림">
+                <input type="radio" id="event_type" name="action" value="넘어짐"><br>
+                <input type="radio" id="event_type" name="action" value="먹음">
+                <input type="radio" id="event_type" name="action" value="맞음">
+                <input type="radio" id="event_type" name="action" value="부딪힘">
+                
+                <br>
+                <label for="confidence">인식 신뢰도: </label>
+                <input type="range" min="0" max="100" id="confidence"><br>
+                <label for="timestamp">감지 시간: </label>
+                <input type="datetime-local" step="1" id="timestamp"><br><br>
+                <input type="submit" value="저장">
+            </form>
         </div>
     </body>
 </html>
