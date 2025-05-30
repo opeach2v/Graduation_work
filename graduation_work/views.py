@@ -4,7 +4,7 @@ from django.http import JsonResponse, HttpResponse
 from datetime import datetime
 from django.contrib.auth import logout as django_logout
 from django.contrib.auth.models import User
-from .models import users_collection
+from .models import users_collection, results_collection
 from . import models
 from django.views.decorators.cache import never_cache
 
@@ -133,6 +133,7 @@ def logout_view(request) :
     django_logout(request)
     return redirect('login_user')
 
+
 # 파일 업로드
 def uplooadFile(request):
     if request.method == "POST":
@@ -151,3 +152,43 @@ def uplooadFile(request):
     return render(request, "teachers_page.html", context = {
         "files": fileUpload
     })
+
+
+# DB ai_results 컬렉션에 값 입력해서 넣기
+def input_results(request):
+    if request.method == 'POST':
+        try:
+            # POST 데이터 받기
+            child_id = request.POST.get('child_id')
+            event_type = request.POST.get('event_type')
+            confidence = request.POST.get('confidence')
+            timestamp = request.POST.get('timestamp')
+
+            # 데이터 생성
+            data = {
+                "child_id": child_id,
+                "event_type": event_type,
+                "confidence": confidence,
+                "timestamp": timestamp
+            }
+
+            # mongoDB에 저장
+            results_collection.insert_one(data)
+            return redirect('input_results')
+        except Exception as e:
+            return JsonResponse({"input error" : str(e)}, status=500)
+
+    # GET 요청이 들어오면 입력창을 렌더링
+    return render(request, 'graduation_work/temporary_inputResult.html')
+
+# ai_results 값 보기
+def showResults(request):
+    res = []
+    for doc in results_collection.find({}):
+        child_id = doc.get("child_id")
+        event_type = doc.get("event_type")
+        confidence = doc.get("confidence")
+        timestamp = doc.get("timestamp")
+        res.append({"child_id": child_id, "event_type": event_type, "confidence": confidence, "timestamp": timestamp})
+    
+    return JsonResponse({'res': res}, safe=False, json_dumps_params={'ensure_ascii': False}, content_type="application/json; charset=UTF-8")
