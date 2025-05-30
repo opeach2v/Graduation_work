@@ -186,7 +186,7 @@ def showResults(request):
     res = []
     for doc in results_collection.find({}):
         child_id = doc.get("child_id")
-        event_type = doc.get("event_type")
+        event_type = doc.get("action")
         confidence = doc.get("confidence")
         timestamp = doc.get("timestamp")
         res.append({"child_id": child_id, "event_type": event_type, "confidence": confidence, "timestamp": timestamp})
