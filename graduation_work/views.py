@@ -160,7 +160,7 @@ def input_results(request):
         try:
             # POST 데이터 받기
             child_id = request.POST.get('child_id')
-            event_type = request.POST.get('event_type')
+            event_type = request.POST.get('action')
             confidence = request.POST.get('confidence')
             timestamp = request.POST.get('timestamp')
 
@@ -186,7 +186,7 @@ def showResults(request):
     res = []
     for doc in results_collection.find({}):
         child_id = doc.get("child_id")
-        event_type = doc.get("action")
+        event_type = doc.get("event_type")
         confidence = doc.get("confidence")
         timestamp = doc.get("timestamp")
         res.append({"child_id": child_id, "event_type": event_type, "confidence": confidence, "timestamp": timestamp})
