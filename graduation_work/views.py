@@ -192,3 +192,8 @@ def showResults(request):
         res.append({"child_id": child_id, "event_type": event_type, "confidence": confidence, "timestamp": timestamp})
     
     return JsonResponse({'res': res}, safe=False, json_dumps_params={'ensure_ascii': False}, content_type="application/json; charset=UTF-8")
+
+# ai_results 데이터 삭제
+def deleteRes(request):
+    res = results_collection.delete_many({})
+    return HttpResponse(f"{res.deleted_count} documents deleted from 'actions'")
