@@ -5,12 +5,14 @@
         <title>임시 결과 값 넣기 페이지</title>
     </head>
     <body>
+        {% block asd %}
+        {% endblock %}
         <div>
             <form method="POST" action="{% url 'input_results' %}">
                 {% csrf_token %}
                 <label for="child_id">아동 ID: </label>
                 <input type="text" id="child_id"><br>
-                <label for="event_type">감지된 행동: </label>
+                <label for="event_type">감지된 행동: </label><br>
                 <input type="radio" id="event_type" name="action" value="울음">울음
                 <input type="radio" id="event_type" name="action" value="달림">달림
                 <input type="radio" id="event_type" name="action" value="넘어짐">넘어짐<br>
