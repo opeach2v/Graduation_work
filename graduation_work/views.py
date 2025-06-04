@@ -347,11 +347,11 @@ def add_child(request):
 def show_children(request):
     res = []
     for doc in children_collection.find({}):
-        childname = doc.get("childname")
+        name = doc.get("name")
         birthdate = doc.get("birthdate")
         parent_id = doc.get("parent_id")
         classroom = doc.get("classroom")
-        res.append({"name": childname, "birthdate": birthdate, "parent_id": parent_id, "classroom": classroom})
+        res.append({"name": name, "birthdate": birthdate, "parent_id": parent_id, "classroom": classroom})
     
     return JsonResponse({'res': res}, safe=False, json_dumps_params={'ensure_ascii': False}, content_type="application/json; charset=UTF-8")
 
