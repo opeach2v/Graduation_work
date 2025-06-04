@@ -282,10 +282,8 @@ def showParents(request):
                     "age": f"{age}세" if isinstance(age, int) else age,
                 })
 
-        parents.append(parent)
-
     return render(request, 'graduation_work/parents_page.html', {
-        "parents": parents
+        "parents": parent
     })
 
 # 만 나이 계산 함수
