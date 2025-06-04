@@ -134,7 +134,7 @@
                             {% csrf_token %}
                             <input type="hidden" name="parent_id" value="{{ parents.id }}">
 
-                            <label for="childname" class="childLabel">자녀 이름 (child name): <input id="childname" type="text" name="name" class="childInput" placeholder="Enter your child's name *" required></label>
+                            <label for="childname" class="childLabel">자녀 이름 (child name): <input id="childname" type="text" name="childname" class="childInput" placeholder="Enter your child's name *" required></label>
                             <label for="birthdate" class="childLabel">자녀 생년월일 (birthday): <input type="date" name="birthdate" class="childInput" placeholder="Enter your child's birthday *" required></label>
                             <label for="classroom" class="childLabel">자녀 소속 반 (classroom): 
                                 <select id="classroom" class="classroom">
