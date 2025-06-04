@@ -94,6 +94,11 @@ body {
     width: 100%;
 }
 
+.homework-list-box p {
+    text-align: center;
+    font-size: 16px;
+}
+
 /* 테이블(aka 리스트) 스타일 */
 table {
     width: 100%;
@@ -363,8 +368,8 @@ details > summary::-webkit-details-marker {
     margin-top: 5px;
     margin-bottom: 5px;
     text-align: left;
-    color: #555;
-    font-weight: bold;
+    color: #2e2e2e;
+    font-size: 12px;
 }
 
 .childInput {
@@ -386,5 +391,29 @@ select {
 
 .child-name {
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: 14px;
+}
+
+.child-add-btn {
+    background-color: #f8e784;
+    color: #313131;
+    font-size: 13px;
+    border: none;
+    padding: 8px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.child-add-btn:hover {
+    background-color: #f0d852;
+}
+
+.submit-btn {
+    background-color: #f8e784;
+    color: #313131;
+    font-size: 13px;
+    border: none;
+    padding: 8px 10px;
+    border-radius: 8px;
+    cursor: pointer;
 }

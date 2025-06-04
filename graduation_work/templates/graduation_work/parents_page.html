@@ -127,7 +127,7 @@
                     <div class="homework-list-box">
                         {% if parents.children|length == 0 %}
                         <p>자녀 없음</p>
-                        <button onclick="toggleAddForm('{{ parents.id }}')">자녀 정보 추가하기</button>
+                        <button onclick="toggleAddForm('{{ parents.id }}')" class="child-add-btn">자녀 정보 추가하기</button>
 
                         <div id="add-form-{{ parents.id }}" style="display:none; margin-top:10px;">
                         <form method="POST" action="{% url 'add_child' %}">
@@ -135,7 +135,6 @@
                             <input type="hidden" name="parent_id" value="{{ parents.id }}">
 
                             <label for="childname" class="childLabel">자녀 이름 (child name):<input id="childname" type="text" name="name" class="childInput" placeholder="Enter your child's name *" required></label>
-                            <input id="childname" type="text" name="name" placeholder="Enter your child's name *" required>
                             <label for="birthdate" class="childLabel">자녀 생년월일 (birthday):<input type="date" name="birthdate" class="childInput" placeholder="Enter your child's birthday *" required></label>
                             <label for="classroom" class="childLabel">자녀 소속 반 (classroom):
                                 <select id="classroom" class="classroom">
@@ -144,7 +143,7 @@
                                     <option name="classroom" value="곰반">곰반</option>
                                 </select>
                             </label>
-                            <button type="submit">추가</button>
+                            <button type="submit" class="submit-btn">추가</button>
                         </form>
                         </div>
 
