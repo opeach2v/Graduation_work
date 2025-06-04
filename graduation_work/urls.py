@@ -14,6 +14,8 @@ urlpatterns = [
     path('show/', views.show_users),
     path('res_show/', views.showResults),
     path('show_parents/', views.showParents),
+    path('showparents/', views.show_parents),
+
     path('show_teachers/', views.showTeachers),
 
     path('addresult/', views.input_results, name='input_results'),  # 임시로 만든 거
