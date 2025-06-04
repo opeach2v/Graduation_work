@@ -78,7 +78,7 @@ body {
 
 .homework-box {
     display: grid;
-    flex-direction: row;
+    gap: 15px;
     background-color: #ffffff;
     padding: 25px;
     border-radius: 15px;
