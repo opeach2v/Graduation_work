@@ -1,6 +1,7 @@
 // 알림장 팝업 띄우기
-function openPop() {
+function openPop(childName) {
     document.getElementById("popup_layer").style.display = "block";
+    document.querySelector("#popup_layer h3").innerText = `${childName}의 알림장`;
 }
 // 알림장 팝업 닫기
 function closePop() {
@@ -8,8 +9,9 @@ function closePop() {
 }
 
 // 오늘의 하루 팝업 띄우기
-function openTodayPop() {
+function openTodayPop(childName) {
     document.getElementById("today_popup_layer").style.display = "block";
+    document.querySelector("#popup_layer h3 .child-name").innerText = `-------${childName} 어린이-------`;
 }
 // 오늘의 하루 팝업 닫기
 function closeTodayPop() {
@@ -73,3 +75,12 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
+function toggleAddForm(parentId) {
+    const form = document.getElementById('add-form-' + parentId);
+    if (form.style.display === 'none') {
+        form.style.display = 'block';
+    } else {
+        form.style.display = 'none';
+    }
+}

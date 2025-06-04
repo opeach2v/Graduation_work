@@ -1,7 +1,7 @@
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render, redirect
 from django.http import JsonResponse, HttpResponse
-from datetime import datetime
+from datetime import date, datetime
 from django.contrib.auth import logout as django_logout
 from django.contrib.auth.models import User
 from .models import users_collection, results_collection, children_collection, teachers_collection, parents_collection
@@ -9,6 +9,7 @@ from . import models
 from django.views.decorators.cache import never_cache
 from django.contrib import messages
 import json, re
+from bson import ObjectId
 
 import bcrypt;
 
@@ -104,8 +105,17 @@ def login_user(request):
                 
                     # role에 따라 리디렉션
                     if role == "parent":    # 부모님
+                        parent_data = parents_collection.find_one({"children_ids": {"$ne": []}})    # 빈 리스트가 아닌 경우에만 찾음
+                        # 세션에 저장 (조건: 존재하고 children_ids가 비어있지 않으면)
+                        if parent_data and 'children_ids' in parent_data:
+                            request.session['children_ids'] = parent_data['children_ids'];
+                        else:
+                            request.session['children_ids'] = []  # 기본값
                         return redirect('parents_page')
                     elif role == "teacher": # 선생님
+                        teacher_data = teachers_collection.find_one({"username": username})
+                        if teacher_data and 'classroom' in teacher_data:
+                            request.session['classroom'] = teacher_data['classroom']
                         return redirect('teachers_page')
                     else:
                         # 로그인 실패
@@ -127,9 +137,11 @@ def parentsPage(request):
     if not request.session.get('username'):
         return redirect('login_user')
     name = request.session.get('name')  # 세션에 저장했던 값 꺼냄
+    children_ids = request.session.get('children_ids', [])  # 리스트 형태로 불러오기
 
     return render(request, 'graduation_work/parents_page.html', {
-        'name' : name
+        'name' : name,
+        'children_ids': children_ids
     })
 
 @never_cache
@@ -138,10 +150,11 @@ def teachersPage(request):
     if not request.session.get('username'):
         return redirect('login_user')
     name = request.session.get('name')
-
+    classroom = request.session.get('classroom')
 
     return render(request, 'graduation_work/teachers_page.html', {
-        'name' : name
+        'name' : name,
+        'classroom': classroom
     })
 
 def show_users(request):
@@ -232,17 +245,92 @@ def deleteUsers(request):
     res = users_collection.delete_many({})
     return HttpResponse(f"{res.deleted_count} documents deleted from 'actions'")
 
+# 부모님 컬렉션 값 보기
+def showParents(request):
+    parents = []
+    for parent_doc in parents_collection.find({}):
+        parent = {
+            "_id": parent_doc.get("_id"),
+            "name": parent_doc.get("name"),
+            "contact": parent_doc.get("contact"),
+            "children": []
+        }
+
+        for cid in parent_doc.get("children_ids", []):
+            child = children_collection.find_one({"_id": ObjectId(cid)})
+            if child:
+                birthdate = child.get("birthdate")
+                if birthdate and isinstance(birthdate, datetime):
+                    age = calculate_age(birthdate.date())  # datetime.date로 변환
+                else:
+                    age = "정보 없음"
+
+                parent["children"].append({
+                    "id": str(child["_id"]),
+                    "name": child["name"],
+                    "age": f"{age}세" if isinstance(age, int) else age,
+                })
+
+        parents.append(parent)
+
+    return render(request, 'graduation_work/parents_page.html', {
+        "parents": parents
+    })
+
+# 만 나이 계산 함수
+def calculate_age(birthdate):
+    today = date.today()
+    return today.year - birthdate.year - (
+        (today.month, today.day) < (birthdate.month, birthdate.day)
+    )
+
+# 부모님 데이터 삭제
+def deleteParents(request):
+    res = parents_collection.delete_many({})
+    return HttpResponse(f"{res.deleted_count} documents deleted from 'actions'")
+
+# 선생님 컬렉션 값 보기
+def showTeachers(request):
+    res = []
+    for doc in teachers_collection.find({}):
+        _id = doc.get("_id")
+        name = doc.get("name")
+        contant = doc.get("contant")
+        classroom = doc.get("classroom")
+        res.append({"_id": str(_id), "name": name, "contant": contant, "classroom": classroom})
+    
+    return JsonResponse({'res': res}, safe=False, json_dumps_params={'ensure_ascii': False}, content_type="application/json; charset=UTF-8")
+
+# 선생님 데이터 삭제
+def deleteTeachers(request):
+    res = teachers_collection.delete_many({})
+    return HttpResponse(f"{res.deleted_count} documents deleted from 'actions'")
+
 @csrf_exempt
-def save_child(request):    # children 컬렉션에 저장됨
-    if request.method == "POST":
-        data = json.loads(request.body)
-        name = data.get("name")
-        birthdate = data.get("birthdate")
-        classroom = data.get("classroom")
+def add_child(request):
+    if request.method == 'POST':
+        parent_id = request.POST.get('parent_id')
+        child_name = request.POST.get('childname')
+        birthdate = request.POST.get('birthdate')
+        classroom = request.POST.get('classroom')
 
-        # 저장 로직 (예시)
-        print(f"저장된 자녀 정보: {name}, {birthdate}, {classroom}")
+        format_birthdate = datetime.strptime(birthdate, '%Y-%m-%d')
+        # 데이터 생성
+        data = {
+            "name": child_name,
+            "birthdate": format_birthdate,
+            "parent_id": parent_id,
+            "classroom": classroom
+        }
 
-        return JsonResponse({"message": "saved"}, status=200)
+        # mongoDB에 어린이 데이터 저장
+        inserted_child = children_collection.insert_one(data)
 
-    return JsonResponse({"error": "invalid method"}, status=400)
+        child_id = inserted_child.inserted_id   # 자녀의 _id 가져오기
+
+        # 그리고 생성된 어린이 고유 id를 부모님 컬렉션에 업데이트
+        parents_collection.update_one(
+            {"_id": ObjectId(parent_id)},
+            {"$push": {"children_ids": child_id}}  # child_id
+        )
+        return redirect('parents_page')  # 다시 부모 페이지로

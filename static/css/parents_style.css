@@ -360,3 +360,35 @@ details > summary::-webkit-details-marker {
     padding: 5px;
     cursor: pointer;
 }
+
+.childLabel {
+    display: block;
+    float: left;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: left;
+    color: #555;
+    font-weight: bold;
+}
+
+.childInput {
+    display: block;
+    float: right;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+
+select {
+    display: block;
+    float: right;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.child-name {
+    text-align: center;
+    margin-bottom: 15px;
+}
