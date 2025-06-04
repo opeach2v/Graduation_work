@@ -370,7 +370,6 @@ details > summary::-webkit-details-marker {
     text-align: left;
     color: #2e2e2e;
     font-size: 13px;
-    padding: 5px;
 }
 
 .childInput {
@@ -407,7 +406,7 @@ select {
     padding: 8px;
     border-radius: 8px;
     cursor: pointer;
-    margin-left: 100px;
+    margin-left: 80px;
 }
 
 .child-add-btn:hover {
@@ -422,7 +421,7 @@ select {
     padding: 8px 8px;
     border-radius: 8px;
     cursor: pointer;
-    margin-left: 140px;
+    margin-left: 120px;
 }
 
 .submit-btn:hover {
