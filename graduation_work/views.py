@@ -303,9 +303,9 @@ def showTeachers(request):
     for doc in teachers_collection.find({}):
         _id = doc.get("_id")
         name = doc.get("name")
-        contant = doc.get("contant")
+        contact = doc.get("contact")
         classroom = doc.get("classroom")
-        res.append({"_id": str(_id), "name": name, "contant": contant, "classroom": classroom})
+        res.append({"_id": str(_id), "name": name, "contact": contact, "classroom": classroom})
     
     return JsonResponse({'res': res}, safe=False, json_dumps_params={'ensure_ascii': False}, content_type="application/json; charset=UTF-8")
 
