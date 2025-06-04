@@ -54,6 +54,8 @@ def add_users(request):
                 "createdAt": datetime.now()
             }
 
+            print("Saving user:", data)  # 확인용 출력
+
             # mongoDB users 컬렉션에 저장 저장
             users_collection.insert_one(data)
 
