@@ -72,13 +72,12 @@ body {
 
 /* 알림장 컨테이너 */
 .homework-container {
-    margin: auto;
+    margin-top: 15px;
     width: 90%;
 }
 
 .homework-box {
     display: grid;
-    gap: 15px;
     background-color: #ffffff;
     padding: 25px;
     border-radius: 15px;
