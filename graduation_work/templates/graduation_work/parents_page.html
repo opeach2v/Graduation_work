@@ -128,7 +128,7 @@
                     <div class="homework-list-box">
                         {% if parent.children|length == 0 %}
                         <p>자녀 없음</p>
-                        <button onclick="toggleAddForm('{{ parent._id }}')">자녀 정보 추가하기</button>
+                        <button onclick="toggleAddForm('{{ parent.id }}')">자녀 정보 추가하기</button>
 
                         <div id="add-form-{{ parent._id }}" style="display:none; margin-top:10px;">
                         <form method="POST" action="{% url 'add_child' %}">

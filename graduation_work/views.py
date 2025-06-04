@@ -261,7 +261,7 @@ def showParents(request):
     parents = []
     for parent_doc in parents_collection.find({}):
         parent = {
-            "_id": str(parent_doc.get("_id")),
+            "id": str(parent_doc.get("_id")),
             "name": parent_doc.get("name"),
             "contact": parent_doc.get("contact"),
             "children": []
