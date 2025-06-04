@@ -27,4 +27,5 @@ urlpatterns = [
     path('removeuser/', views.deleteUsers, name='deleteUsers'),
     path('removeparents/', views.deleteParents, name='deleteParents'),
     path('removeteachers/', views.deleteTeachers, name='deleteTeachers'),
+    path('removechildren/', views.deleteChildren, name='deleteChildren'),
 ]
