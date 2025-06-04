@@ -32,6 +32,13 @@ def add_users(request):
             if role == "teacher":
                 classroom = request.POST.get('classroom')
 
+            print("POST data:", request.POST)
+            print("username:", username)
+            print("password:", password)
+            print("role:", role)
+            print("name:", name)
+            print("contact:", contact)
+
             # 모든 항목이 입력되었는지 확인
             if not all([username, password, role, name, contact]):
                 messages.error(request, "모든 항목을 입력해주세요.")
