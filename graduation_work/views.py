@@ -111,7 +111,7 @@ def login_user(request):
                             request.session['children_ids'] = parent_data['children_ids'];
                         else:
                             request.session['children_ids'] = []  # 기본값
-                        return redirect('parents_page')
+                        return redirect('showParent')
                     elif role == "teacher": # 선생님
                         teacher_data = teachers_collection.find_one({"username": username})
                         if teacher_data and 'classroom' in teacher_data:
@@ -258,7 +258,6 @@ def show_parents(request):
 
 # 부모님 컬렉션 값 보기
 def showParents(request):
-    parents = []
     for parent_doc in parents_collection.find({}):
         parent = {
             "id": str(parent_doc.get("_id")),
