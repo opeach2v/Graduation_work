@@ -38,6 +38,7 @@ def add_users(request):
             print("role:", role)
             print("name:", name)
             print("contact:", contact)
+            print("classroom:", classroom)
 
             # 모든 항목이 입력되었는지 확인
             if not all([username, password, role, name, contact]):
@@ -60,8 +61,6 @@ def add_users(request):
                 "name": name,
                 "createdAt": datetime.now()
             }
-
-            print("Saving user:", data)  # 확인용 출력
 
             # mongoDB users 컬렉션에 저장 저장
             users_collection.insert_one(data)
