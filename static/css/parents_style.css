@@ -369,12 +369,13 @@ details > summary::-webkit-details-marker {
     margin-bottom: 5px;
     text-align: left;
     color: #2e2e2e;
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .childInput {
     display: block;
     float: right;
+    padding: 8px;
     box-sizing: border-box;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -394,14 +395,16 @@ select {
     margin-bottom: 14px;
 }
 
+
 .child-add-btn {
     background-color: #f8e784;
     color: #313131;
     font-size: 13px;
     border: none;
-    padding: 8px 10px;
+    padding: 8px;
     border-radius: 8px;
     cursor: pointer;
+    margin-left: 30px;
 }
 
 .child-add-btn:hover {
@@ -413,7 +416,11 @@ select {
     color: #313131;
     font-size: 13px;
     border: none;
-    padding: 8px 10px;
+    padding: 8px 8px;
     border-radius: 8px;
     cursor: pointer;
+}
+
+.submit-btn:hover {
+    background-color: #f0d852;
 }
