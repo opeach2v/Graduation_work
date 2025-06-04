@@ -108,7 +108,7 @@ def login_user(request):
                         parent_data = parents_collection.find_one({"children_ids": {"$ne": []}})    # 빈 리스트가 아닌 경우에만 찾음
                         # 세션에 저장 (조건: 존재하고 children_ids가 비어있지 않으면)
                         if parent_data and 'children_ids' in parent_data:
-                            request.session['children_ids'] = parent_data['children_ids'];
+                            request.session['children_ids'] = [str(cid) for cid in parent_data['children_ids']]
                         else:
                             request.session['children_ids'] = []  # 기본값
                         return redirect('showParent')
