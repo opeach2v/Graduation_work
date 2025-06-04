@@ -126,7 +126,7 @@
                 <div class="homework-box">
                     <div class="homework-list-box">
                         {% if parents.children|length == 0 %}
-                        <p>자녀 없음</p>
+                        <p>자녀 없음</p><br>
                         <button onclick="toggleAddForm('{{ parents.id }}')" class="child-add-btn">자녀 정보 추가하기</button>
 
                         <div id="add-form-{{ parents.id }}" style="display:none; margin-top:10px;">
