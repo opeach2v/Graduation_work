@@ -342,3 +342,15 @@ def add_child(request):
             {"$push": {"children_ids": child_id}}  # child_id
         )
         return redirect('parents_page')  # 다시 부모 페이지로
+    
+# 어린이 컬렉션 보기 
+def show_children(request):
+    res = []
+    for doc in children_collection.find({}):
+        name = doc.get("name")
+        birthdate = doc.get("birthdate")
+        parent_id = doc.get("parent_id")
+        classroom = doc.get("classroom")
+        res.append({"name": name, "birthdate": birthdate, "parent_id": parent_id, "classroom": classroom})
+    
+    return JsonResponse({'res': res}, safe=False, json_dumps_params={'ensure_ascii': False}, content_type="application/json; charset=UTF-8")

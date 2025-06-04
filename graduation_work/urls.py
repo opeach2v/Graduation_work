@@ -13,6 +13,7 @@ urlpatterns = [
     # 데이터 확인용 
     path('show/', views.show_users),
     path('res_show/', views.showResults),
+    path('show_children/', views.show_children),
     path('show_parents/', views.showParents, name='showParent'),
     path('showparents/', views.show_parents),
 
