@@ -13,4 +13,6 @@ urlpatterns = [
     path('res_show/', views.showResults),
     path('addresult/', views.input_results, name='input_results'),  # 임시로 만든 거
     path('removedata/', views.deleteRes, name='deleteRes'),
+    path('removeUser/', views.deleteUsers, name='deleteUsers'),
+    path("save_child/", views.save_child, name="save_child"),
 ]

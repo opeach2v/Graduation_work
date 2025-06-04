@@ -4,9 +4,11 @@ from django.http import JsonResponse, HttpResponse
 from datetime import datetime
 from django.contrib.auth import logout as django_logout
 from django.contrib.auth.models import User
-from .models import users_collection, results_collection
+from .models import users_collection, results_collection, children_collection, teachers_collection, parents_collection
 from . import models
 from django.views.decorators.cache import never_cache
+from django.contrib import messages
+import json, re
 
 import bcrypt;
 
@@ -25,10 +27,21 @@ def add_users(request):
             password = request.POST.get('password')
             role = request.POST.get('role')
             name = request.POST.get('name')
+            contact = request.POST.get('phoneNumber')
+            if role == "teacher":
+                classroom = request.POST.get('classroom')
 
-            # TODO  username과 password가 영어일 때만 넘어가고, 무조건 4개 항목이 다 입력되어야 가입되도록 해야 함.
-            # TODO  가입 되면 그냥 로그인 페이지로 가는 게 아니라 회원가입 됐다고 뜨도록 해야 함
+            # 모든 항목이 입력되었는지 확인
+            if not all([username, password, role, name, contact]):
+                messages.error(request, "모든 항목을 입력해주세요.")
+                return redirect('signup_page')  # 회원가입 페이지로 다시 이동
 
+            # username과 password는 영어(알파벳)만 허용
+            if not re.fullmatch(r'[A-Za-z]+', username) or not re.fullmatch(r'[A-Za-z]+', password):
+                messages.error(request, "아이디와 비밀번호는 영문자만 사용 가능합니다.")
+                return redirect('signup_page')
+
+            # 비밀번호 해싱
             hashed_pw = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8');
 
             # 데이터 생성
@@ -40,8 +53,24 @@ def add_users(request):
                 "createdAt": datetime.now()
             }
 
-            # mongoDB에 저장
+            # mongoDB users 컬렉션에 저장 저장
             users_collection.insert_one(data)
+
+            if role == "parent":
+                parents_collection.insert_one({
+                    "name": name,
+                    "contact": contact,
+                    "children_ids": []
+                })
+            elif role == "teacher":
+                teachers_collection.insert_one({
+                    "name": name,
+                    "contact": contact,
+                    "classroom": classroom
+                })
+
+            # 성공 메시지와 함께 로그인 페이지로 이동
+            messages.success(request, f"{name} 님, 회원가입이 완료되었습니다. 로그인 해주세요!")
             return redirect('login_user')  # 회원가입 후 로그인 페이지로 리다이렉션
         except Exception as e:
             return JsonResponse({"signup error" : str(e)}, status=500)
@@ -197,3 +226,23 @@ def showResults(request):
 def deleteRes(request):
     res = results_collection.delete_many({})
     return HttpResponse(f"{res.deleted_count} documents deleted from 'actions'")
+
+# 유저 데이터 삭제
+def deleteUsers(request):
+    res = users_collection.delete_many({})
+    return HttpResponse(f"{res.deleted_count} documents deleted from 'actions'")
+
+@csrf_exempt
+def save_child(request):    # children 컬렉션에 저장됨
+    if request.method == "POST":
+        data = json.loads(request.body)
+        name = data.get("name")
+        birthdate = data.get("birthdate")
+        classroom = data.get("classroom")
+
+        # 저장 로직 (예시)
+        print(f"저장된 자녀 정보: {name}, {birthdate}, {classroom}")
+
+        return JsonResponse({"message": "saved"}, status=200)
+
+    return JsonResponse({"error": "invalid method"}, status=400)

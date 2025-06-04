@@ -36,35 +36,53 @@ body {
 
 /* 메인 컨테이너 */
 .main-container {
+    display: grid;
+    place-items: center;
     padding-top: 20px;
     padding-bottom: 50px;
-    width: 400px;
+    width: 350px;
     margin: 140px auto;
-    /* 가운데 정렬 */
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
     border: 2px solid #f7f097;
     border-radius: 20px;
     background-color: #fffddf;
     border-bottom: 3px solid #eee;
 }
 
-/* 로그인 컨테이너 */
+/* 회원가입 컨테이너 */
 .create-container {
     margin: auto;
     width: 90%;
-    height: 620px;
 }
 
 .create-box {
-    display: flex;
-    flex-direction: column;
     background-color: #ffffff;
     padding: 25px;
     border-radius: 15px;
     width: 100%;
     margin: 0 auto;
+}
+
+.role-fields {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+/* 활성화된 경우 */
+.role-fields.active {
+    max-height: 500px; /* 충분히 크게 설정해야 전체 내용 보임 */
+    opacity: 1;
+    padding-top: 10px;
+}
+
+select {
+    display: block;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 5px;
 }
 
 .select {
@@ -97,12 +115,20 @@ body {
 
 label {
     display: block;
-    width: 100%;
-    margin-top: 10px;
+    float: left;
+    margin-top: 15px;
     margin-bottom: 5px;
+    margin-left: 5px;
     text-align: left;
     color: #555;
     font-weight: bold;
+}
+
+p {
+    display: block;
+    margin-left: 5px;
+    float: right;
+    color: red;
 }
 
 input {
