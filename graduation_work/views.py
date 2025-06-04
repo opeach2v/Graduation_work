@@ -35,12 +35,12 @@ def add_users(request):
             # 모든 항목이 입력되었는지 확인
             if not all([username, password, role, name, contact]):
                 messages.error(request, "모든 항목을 입력해주세요.")
-                return redirect('signup')  # 회원가입 페이지로 다시 이동
+                return redirect('add_users')  # 회원가입 페이지로 다시 이동
 
             # username과 password는 영어(알파벳)만 허용
             if not re.fullmatch(r'[A-Za-z]+', username) or not re.fullmatch(r'[A-Za-z]+', password):
                 messages.error(request, "아이디와 비밀번호는 영문자만 사용 가능합니다.")
-                return redirect('signup')
+                return redirect('add_users')
 
             # 비밀번호 해싱
             hashed_pw = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8');
