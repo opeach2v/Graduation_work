@@ -341,7 +341,7 @@ def add_child(request):
             {"_id": ObjectId(parent_id)},
             {"$push": {"children_ids": child_id}}  # child_id
         )
-        return redirect('parents_page')  # 다시 부모 페이지로
+        return redirect('showParent')  # 다시 부모 페이지로
     
 # 어린이 컬렉션 보기 
 def show_children(request):
